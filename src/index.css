@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400&family=Tilt+Prism&display=swap');
+
+.menu a.active {
+    border-bottom: 2px solid red;
+    background-color: transparent;
+    border-radius: 0;
+  }
+  .menu a:hover{
+    border-bottom: 2px solid red;
+    background-color: transparent;
+    border-radius: 0;
+    
+  }
+  .navName{
+   
+    font-family: 'Tilt Prism', cursive;
+    font-weight: bold;
+    background-image: linear-gradient(80deg, #ED1C24, #fff);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
