@@ -1,6 +1,28 @@
+import { useContext } from "react";
 import {  Link, NavLink } from "react-router-dom";
+import { authContext } from "../../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Header = () => {
+  const {user, LogOut} = useContext(authContext)
+
+
+  const handleLogout =()=>{
+    LogOut()
+    .then(()=>{
+      Swal.fire({
+        title: 'Logout successful',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
+    })
+    .catch(err =>console.log(err))
+
+  }
 
     const navLinks = <>
             <li>
@@ -12,9 +34,30 @@ const Header = () => {
             <li>
                <NavLink to ='/classes'>Classes</NavLink>
             </li>
-            <li>
-               <NavLink to ='/dashboard '>Dashboard </NavLink>
-            </li>
+           
+            {
+              user ? 
+              <>
+               <li>
+                   <NavLink to ='/dashboard '>Dashboard </NavLink>
+                </li>
+                <li>
+            <p>
+               
+            <img src={user?.photoURL} alt="" className="border w-10 h-10 rounded-full" />
+            </p>
+                </li>
+                <li>
+                <button onClick={handleLogout} className="btn btn-outline btn-sm text-white text-center ">Log Out</button>
+                </li>
+              
+           </>
+              :<>
+              <li>
+              <p><Link to="/login" className="btn btn-sm bg-[#ED1C24] border-0 text-white hover:text-black">Login</Link></p>
+              </li>
+              </>
+            }
 
     </>
 
@@ -40,9 +83,10 @@ const Header = () => {
               />
             </svg>
           </label>
+          {/* small device menu */}
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            className="menu menu-sm dropdown-content mt-3 p-2  rounded-box w-52">
            {navLinks}
           </ul>
         </div>
@@ -54,6 +98,7 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
+       
         
       </div>
 

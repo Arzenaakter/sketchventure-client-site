@@ -1,8 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400&family=Tilt+Prism&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400&family=Tilt+Prism&display=swap');
 
 .menu a.active {
     border-bottom: 2px solid red;
