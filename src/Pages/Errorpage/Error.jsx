@@ -9,7 +9,7 @@ const Error = () => {
           alt="404 page"
         />
       </div>
-        <Link to='/'>  <button className="btn btn-error mt-4 ">Back to Home</button></Link>
+        <Link to='/'>  <button className="btn common-btn mt-4 ">Back to Home</button></Link>
     </div>
   );
 };

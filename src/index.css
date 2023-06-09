@@ -26,3 +26,28 @@
     -webkit-text-fill-color: transparent;
   }
   
+   .content{
+    position: absolute;
+    margin-top: -800px;
+    background-color: rgba(0, 0, 0, 0.8); 
+    width: 70%;
+    height: 60%;
+    padding: 20px;
+    color: white;
+
+   }
+   .content p{
+    color: #DAD5DB;
+   }
+   .common-btn{
+    background: #000;
+    border: 2px solid #ED1C24;
+    color: white;
+   }
+  
+   .common-btn:hover{
+   
+    border: 2px solid #ED1C24;
+    color: black;
+   }
+  

@@ -5,12 +5,14 @@ import { useContext } from "react";
 import { authContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
-    const {LogIn,googleSignIn,userProfile} = useContext(authContext)
+    const {LogIn,googleSignIn,userProfile} = useContext(authContext);
+    const { register,handleSubmit, formState: { errors },  reset,  } = useForm();
 
     const [show, setShow] = useState(false);
-    const [error,setError] =useState([]);
+    // const [error,setError] =useState([]);
 
 
     const  location = useLocation()
@@ -29,19 +31,15 @@ const Login = () => {
             userProfile(loggedUser.displayName,loggedUser.photoURL)
         } )
         .catch(err =>{
-            setError(err.message)
+            alert(err)
         })
     }
 
 
-const handleLogin = e =>{
-    e.preventDefault()
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email,password);
 
-    LogIn(email,password)
+
+const onSubmit = (data) => {
+  LogIn(data.email,data.password)
     .then((result) => {
         const loggedUser = result.user;
 
@@ -55,16 +53,22 @@ const handleLogin = e =>{
           }
         })
         navigate(from,{replace: true})
-        form.reset()
+        reset()
 
 
         console.log(loggedUser);
       })
       .catch((err) => {
-     setError(err.message)
+        alert(err);
+        console.log(err);
         
       });
+
+
 }
+
+
+
 
 
     return (
@@ -72,13 +76,22 @@ const handleLogin = e =>{
         <div className="hero-content flex-col lg:flex-row-reverse">
         
           <div className="card  w-full shadow-2xl bg-base-100">
-            <form className="card-body w-96" onSubmit={handleLogin}>
+            <form className="card-body w-96" onSubmit={handleSubmit(onSubmit)}>
 
-              <div className="form-control">
+            <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
-                <input type="email" placeholder="email"  name='email' required className="input input-bordered" />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="email"
+                  className="input input-bordered"
+                  {...register("email", { required: true })}
+                />
+                {errors.email && (
+                  <span className="text-red-500">Email field is required</span>
+                )}
               </div>
 
 
@@ -86,8 +99,19 @@ const handleLogin = e =>{
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input type={show? "text": 'password'} placeholder="password" name='password' required className="input input-bordered" />
-               <p onClick={()=>setShow(!show)} className='-mt-8 ms-72' >
+                <input 
+          type={show? "text": 'password'}
+          name="password"
+          placeholder=" password"
+          className="input input-bordered relative"
+          {...register("password", {
+            required: " password is required",
+           
+          })}
+        />
+        {errors.password && <p className="text-red-500">{errors.password.message}</p>}
+
+               <p onClick={()=>setShow(!show)} className='mt-12 ms-72 z-10 absolute' >
                 <small>
                     {
                         show? <span className=" "><FiEyeOff  size={24}/></span>: <span className=""><FiEye size={24}/></span>
@@ -96,12 +120,14 @@ const handleLogin = e =>{
 
                </p>
 
-                <label className="label">
-                  <p className="text-red-500">{error}</p>
-                </label>
+               
               </div>
               <div className="form-control mt-6">
-                <button className="btn bg-[#ED1C24] border-0 text-white hover:text-black" >Login</button>
+              <input
+                 className="btn bg-[#ED1C24] border-0 text-white hover:text-black"
+                  type="submit"
+                  value="Login"
+                />
                 <label className="label">
                 <p className="text-center">
               <small>

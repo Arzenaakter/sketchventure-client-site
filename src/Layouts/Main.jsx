@@ -4,11 +4,11 @@ import Header from "../Pages/SharedPages/Header/Header";
 
 const Main = () => {
   return (
-    <div>
+    <div >
       <Header></Header>
-      <div className="container mx-auto">
+     
         <Outlet></Outlet>
-      </div>
+     
       <Footer></Footer>
     </div>
   );

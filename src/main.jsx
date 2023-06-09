@@ -11,7 +11,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
            
                     <AuthProvider>
+                    <div className="container mx-auto">
                     <RouterProvider router={router} />
+                    </div>
                     </AuthProvider>
              
   </React.StrictMode>,

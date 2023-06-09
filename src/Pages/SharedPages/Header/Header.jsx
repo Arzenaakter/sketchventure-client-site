@@ -39,22 +39,22 @@ const Header = () => {
               user ? 
               <>
                <li>
-                   <NavLink to ='/dashboard '>Dashboard </NavLink>
+                   <NavLink to ='/dashboard'>Dashboard </NavLink>
                 </li>
                 <li>
-            <p>
+            <p className="-mt-2">
                
-            <img src={user?.photoURL} alt="" className="border w-10 h-10 rounded-full" />
+            <img src={user?.photoURL} alt="" className="border w-10 h-10 rounded-full hidden md:block " />
             </p>
                 </li>
                 <li>
-                <button onClick={handleLogout} className="btn btn-outline btn-sm text-white text-center ">Log Out</button>
+                <button onClick={handleLogout} className="btn common-btn btn-sm  text-center ">Log Out</button>
                 </li>
               
            </>
               :<>
               <li>
-              <p><Link to="/login" className="btn btn-sm bg-[#ED1C24] border-0 text-white hover:text-black">Login</Link></p>
+              <p><Link to="/login" className="btn btn-sm common-btn hover:text-white">Login</Link></p>
               </li>
               </>
             }
@@ -64,7 +64,7 @@ const Header = () => {
 
 
   return (
-    <div className="navbar bg-[#2D2D2D] text-white py-2 ">
+    <div className="navbar bg-[#2D2D2D] text-white py-2  ">
         <div className="container mx-auto">
         <div className="navbar-start">
         <div className="dropdown">
@@ -86,7 +86,7 @@ const Header = () => {
           {/* small device menu */}
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 p-2  rounded-box w-52">
+            className="menu menu-sm dropdown-content mt-3 p-2 bg-[#2D2D2D] text-white rounded-box w-52">
            {navLinks}
           </ul>
         </div>
