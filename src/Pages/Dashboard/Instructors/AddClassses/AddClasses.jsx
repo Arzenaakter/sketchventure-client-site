@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 import { authContext } from "../../../../AuthProvider/AuthProvider";
 
 const AddClasses = () => {
@@ -10,12 +11,40 @@ const AddClasses = () => {
   const onSubmit = (data) => {
     // TODO
 
-    console.log("Submitted:", {
+    const addedClassInfo = {
       ...data,
       instructorName: user.displayName,
       instructorEmail: user.email,
       status: "pending",
-    });
+    };
+    console.log(addedClassInfo);
+
+
+    fetch('http://localhost:5000/addClasses',{
+      method:'POST',
+      headers:{
+        'content-type' : 'application/json'
+      },
+      body: JSON.stringify(addedClassInfo)
+    })
+    .then(res =>res.json())
+    .then(data=>{
+      if(data.insertedId){
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Add class successfully',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    })
+
+
+
+
+
+
 
     reset();
   };
@@ -28,9 +57,11 @@ const AddClasses = () => {
         <div className="hero-content flex-col ">
           <div className="card  w-full shadow-2xl bg-base-100">
             <form
-              className="card-body w-full grid grid-cols-1 md:grid-cols-2 gap-5 items-center"
+              className="card-body w-full "
               onSubmit={handleSubmit(onSubmit)}>
-              {/* instructor email */}
+              {/*  */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
+                {/* instructor email */}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -57,10 +88,22 @@ const AddClasses = () => {
                   readOnly
                 />
               </div>
+              {/* Class Name */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Class Name</span>
+                </label>
+                <input
+                  type="text"
+                  id="className"
+                  className="input input-bordered relative"
+                  {...register("className", { required: true })}
+                />
+              </div>
               {/* Class Image */}
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Class Image</span>
+                  <span className="label-text">Class Image URL</span>
                 </label>
                 <input
                   type="text"
@@ -93,12 +136,14 @@ const AddClasses = () => {
                   {...register("price", { required: true, min: 0 })}
                 />
               </div>
-              <div></div>
+
+              </div>
+              {/*  */}
 
               {/* submit */}
-              <div className="form-control mt-6">
+              <div className="form-control mt-6 ">
                 <input
-                  className="btn common-btn btn-wide"
+                  className="btn common-btn btn-block"
                   type="submit"
                   value="Add Class"
                 />
