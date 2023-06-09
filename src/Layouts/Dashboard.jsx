@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import {  NavLink, Outlet } from "react-router-dom";
+import { FaHome,FaUsers } from 'react-icons/fa';
+import { SiGoogleclassroom } from 'react-icons/si';
 
 
 const Dashboard = () => {
@@ -11,6 +13,11 @@ const Dashboard = () => {
 
 
     {/* Page content here */}
+
+<Outlet></Outlet>
+
+
+
     <label htmlFor="my-drawer-2" className="btn mt-2 common-btn drawer-button lg:hidden">Open drawer</label>
   
   </div> 
@@ -20,25 +27,45 @@ const Dashboard = () => {
 
 
       {/* Sidebar content here */}
+      {/* admin dashboard start*/}
             <li>
-                    <Link to='/dashboard'>Admin Home</Link>
+                    <NavLink to='/dashboard/admin'><FaHome  size={20}/>Admin Home</NavLink>
             </li>
             <li>
-                    <Link to='/dashboard'>Manage Classes</Link>
+                    <NavLink to='/dashboard/manageClass'><SiGoogleclassroom size={20}/>Manage Classes</NavLink>
             </li>
             <li>
-                    <Link to='/dashboard'>Manage Users</Link>
+                    <NavLink to='/dashboard/manageUser'><FaUsers  size={20}/>Manage Users</NavLink>
             </li>
-            <div className="divider"></div>
+                  
+
+            {/* instructor dashboard start*/}
             <li>
-                <Link to='/'>Home</Link>
+                    <NavLink to='/dashboard/insructor'><FaHome  size={20}/>Instructor Home</NavLink>
             </li>
             <li>
-                <Link to='/'>Instructors</Link>
+                    <NavLink to='/dashboard/addClass'><SiGoogleclassroom size={20}/>Add Class</NavLink>
             </li>
             <li>
-                <Link to='/'>Classes</Link>
+                    <NavLink to='/dashboard/myClass'><FaUsers  size={20}/>My Class</NavLink>
             </li>
+            
+            {/* instructor dashboard end*/}
+
+
+
+            <hr className="my-4"/>
+           
+            <li>
+                <NavLink to='/'><FaHome  size={20}/>Home</NavLink>
+            </li>
+            <li>
+                <NavLink to='/'><FaUsers  size={20}/>Instructors</NavLink>
+            </li>
+            <li>
+                <NavLink to='/'> <SiGoogleclassroom size={20}/>Classes</NavLink>
+            </li>
+               {/* admin dashboard end*/}
    
 
 

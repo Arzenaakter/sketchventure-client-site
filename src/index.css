@@ -8,6 +8,7 @@
 
 .menu a.active {
     border-bottom: 2px solid red;
+   
     background-color: transparent;
     border-radius: 0;
   }
@@ -39,12 +40,15 @@
    .content p{
     color: #DAD5DB;
    }
+   
+   
    .common-btn{
-    background: #000;
-    border: 2px solid #ED1C24;
+   
+    background: #2D2D2D;
+    border: 1px solid #ED1C24;
     color: white;
    }
-  
+ 
    .common-btn:hover{
    
     border: 2px solid #ED1C24;
