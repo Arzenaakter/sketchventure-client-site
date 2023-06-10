@@ -4,6 +4,12 @@ import { SiGoogleclassroom } from 'react-icons/si';
 
 
 const Dashboard = () => {
+
+// ToDO
+const isAdmin = true;
+
+
+
     return (
         <div>
             <div className="drawer lg:drawer-open  ">
@@ -28,7 +34,9 @@ const Dashboard = () => {
 
       {/* Sidebar content here */}
       {/* admin dashboard start*/}
-            <li>
+      {
+        isAdmin ?<>
+             <li>
                     <NavLink to='/dashboard/admin'><FaHome  size={20}/>Admin Home</NavLink>
             </li>
             <li>
@@ -37,6 +45,18 @@ const Dashboard = () => {
             <li>
                     <NavLink to='/dashboard/manageUser'><FaUsers  size={20}/>Manage Users</NavLink>
             </li>
+        
+        </>:<></>
+      }
+
+      {
+        // todo for instructor
+      }
+
+
+
+
+           
                   
 
             {/* instructor dashboard start*/}

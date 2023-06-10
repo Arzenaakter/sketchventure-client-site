@@ -1,85 +1,76 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { FcGoogle } from "react-icons/fc";
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { authContext } from "../../AuthProvider/AuthProvider";
+import SocialLogin from "../SharedPages/SocialLogin/SocialLogin";
 
 
 const SignUp = () => {
-    const {googleSignIn, createUser, userProfile,} = useContext(authContext)
+    const { createUser, userProfile,} = useContext(authContext)
     const { register,handleSubmit,watch, formState: { errors },  reset,  } = useForm();
 
     const password = watch("password");
     // const confirm = watch("confirm");
 
- 
 
     const  location = useLocation()
     const navigate = useNavigate()
-  
     const from = location.state?.from?.pathname || '/'
 
-
-
-    const handleGoogleLogin = ()=>{
-        googleSignIn()
-        .then(result =>{
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            navigate(from,{replace: true})
-
-            userProfile(loggedUser.displayName,loggedUser.photoURL)
-        } )
-        .catch(err =>{
-           console.log(err);
-        })
-    }
-
-
-
+// form submit
     const onSubmit = (data) => {
-
-     
       createUser(data.email,data.password)
       .then(result =>{
-                  const createdUser = result.user;
-                  console.log(createdUser);
-                  reset()
-      
-                  Swal.fire({
-                      position: 'top-center',
-                      icon: 'success',
-                      title: 'Sign up successfully',
-                      showConfirmButton: false,
-                      timer: 1500
-                    })
-      
-                    navigate(from,{replace: true})
-                    UpdateProfileUser(result.user,data.name,data.photo)
-             
-            
-      
-              })
-              .catch(err =>{
-                  console.log(err);
-                  alert(err.message)
-              })
-        
-      
-              // user Profile
-              const UpdateProfileUser =()=>{
-                  userProfile(data.name,data.photo)
-                  .then(()=>{
-                    console.log('user name updated');
-                  })
-                  .catch(error =>{
-                    console.log(error);
-            
-                  })
-               
-              };
 
+        const SignUpUser = result.user;
+        console.log(SignUpUser);
+
+        // update profile s
+        userProfile(data.name,data.photo)
+        .then(()=>{
+
+          const saveUser = {name: data.name, email:data.email};
+          fetch('http://localhost:5000/users',{
+            method:'POST',
+            headers:{
+              'content-type':'application/json'
+            },
+            body:JSON.stringify(saveUser)
+          })
+          .then(res =>res.json())
+          .then(data =>{
+            if(data.insertedId){
+              Swal.fire({
+                title: "Sign Up successful",
+                showClass: {
+                  popup: "animate__animated animate__fadeInDown",
+                },
+                hideClass: {
+                  popup: "animate__animated animate__fadeOutUp",
+                },
+              });
+              reset();
+              navigate(from,{replace: true})
+              
+            }
+          })
+        })
+        .catch(err=>console.log(err))
+        
+        // update profile e
+
+      })
+
+
+      .catch(err =>{
+        console.log(err);
+      })
+
+
+
+     
     }
 
 
@@ -212,7 +203,7 @@ const SignUp = () => {
               </div>
               <div className="divider">OR</div>
               <div className="form-control mt-2">
-                <button onClick={handleGoogleLogin} className="btn btn-outline  hover:btn-outline btn-dark"><FcGoogle size={24}/>SignUp with Google</button>
+               <SocialLogin></SocialLogin>
               </div>
             </form>
           </div>

@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { FiEye,FiEyeOff } from 'react-icons/fi';
-import {FcGoogle } from 'react-icons/fc';
 import { useContext } from "react";
 import { authContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import SocialLogin from "../SharedPages/SocialLogin/SocialLogin";
 
 const Login = () => {
-    const {LogIn,googleSignIn,userProfile} = useContext(authContext);
+    const {LogIn} = useContext(authContext);
     const { register,handleSubmit, formState: { errors },  reset,  } = useForm();
 
     const [show, setShow] = useState(false);
@@ -19,22 +19,6 @@ const Login = () => {
     const navigate = useNavigate()
   
     const from = location.state?.from?.pathname || '/'
-
-
-
-    const handleGoogleLogin = ()=>{
-        googleSignIn()
-        .then(result =>{
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            navigate(from,{replace: true})
-            userProfile(loggedUser.displayName,loggedUser.photoURL)
-        } )
-        .catch(err =>{
-            alert(err)
-        })
-    }
-
 
 
 
@@ -141,7 +125,7 @@ const onSubmit = (data) => {
               </div>
               <div className="divider">OR</div>
               <div className="form-control mt-2">
-                <button onClick={handleGoogleLogin} className="btn btn-outline  hover:btn-outline btn-dark"><FcGoogle size={24}/>LogIn with Google</button>
+                <SocialLogin></SocialLogin>
               </div>
             </form>
           </div>
