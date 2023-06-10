@@ -1,19 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
 // import { useState } from "react";
 import Swal from "sweetalert2";
+import useAuth from "../../../hooks/useAuth";
+
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const ManageUsers = () => {
+  const {loading} = useAuth()
+ 
 
-    // const [isAdmin, setIsAdmin] = useState(false)
-    // const [isInstructor, setIsInstructor ] = useState( 'Instructor')
+  const [axiosSecure] = useAxiosSecure();
 
-    const {data: users=[], refetch} = useQuery(['users'], async()=>{
-        const res = await fetch('http://localhost:5000/users')
-        console.log(users);
-        return res.json();
-    })
-
+    const {data: users = [], refetch} = useQuery(['users'], async()=>{
+        const res = await axiosSecure.get('/users')
+       
+        return res.data;
+    },
+    {
+      enabled: !loading, // Enable the query when the loading state is false
+    }
+    )
+    
 
     // admin
     const handleMakeAdmin = id =>{
@@ -61,10 +69,12 @@ const ManageUsers = () => {
 
     return (
         <div className="w-full">
-            <h1 className="text-3xl font-bold text-center mb-4">Total Users : {users.length}</h1>
+            <h1 className="text-3xl font-bold text-red-600 text-center mb-4">
+              Total Users : {users.length}
+              </h1>
 
             <div className="overflow-x-auto">
-  <table className="table table-zebra">
+  <table className="table table-zebra border ">
     {/* head */}
     <thead>
       <tr>
@@ -83,7 +93,7 @@ const ManageUsers = () => {
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>{user.role ===  'admin' ?'Admin' : user.role === 'instructor' ? 'Instructor' : ' Student'}</td>
-            <td>
+            <td className=" space-y-2">
                 <button className="btn btn-sm btn-success"  onClick={()=>handleMakeAdmin(user._id)}>Make Admin</button>
                 <button className="btn btn-sm btn-info" onClick={()=>handleMakeInstructor(user._id)}>Make Instructor</button>
             </td>

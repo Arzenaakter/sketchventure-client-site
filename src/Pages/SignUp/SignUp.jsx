@@ -1,14 +1,15 @@
-import { useContext } from "react";
+
 import { useForm } from "react-hook-form";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { authContext } from "../../AuthProvider/AuthProvider";
+
+import useAuth from "../../hooks/useAuth";
 import SocialLogin from "../SharedPages/SocialLogin/SocialLogin";
 
 
 const SignUp = () => {
-    const { createUser, userProfile,} = useContext(authContext)
+    const { createUser, userProfile,} = useAuth()
     const { register,handleSubmit,watch, formState: { errors },  reset,  } = useForm();
 
     const password = watch("password");

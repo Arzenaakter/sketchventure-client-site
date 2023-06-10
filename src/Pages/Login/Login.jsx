@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { FiEye,FiEyeOff } from 'react-icons/fi';
-import { useContext } from "react";
-import { authContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../SharedPages/SocialLogin/SocialLogin";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
-    const {LogIn} = useContext(authContext);
+    const {LogIn} = useAuth()
     const { register,handleSubmit, formState: { errors },  reset,  } = useForm();
 
     const [show, setShow] = useState(false);
