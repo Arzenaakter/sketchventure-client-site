@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../../AuthProvider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 
+
 const SocialLogin = () => {
     const {googleSignIn, userProfile} = useContext(authContext)
 
@@ -17,10 +18,9 @@ const SocialLogin = () => {
         googleSignIn()
         .then(result =>{
             const loggedUser = result.user;
-            console.log(loggedUser);
-// 
+            
 
-     const saveUser = {name: loggedUser.displayName, email:loggedUser.email};
+         const saveUser = {name: loggedUser.displayName, email:loggedUser.email};
           fetch('http://localhost:5000/users',{
             method:'POST',
             headers:{
@@ -33,8 +33,6 @@ const SocialLogin = () => {
             navigate(from,{replace: true})
           })
 
-            // 
-           
 
             userProfile(loggedUser.displayName,loggedUser.photoURL)
         } )
