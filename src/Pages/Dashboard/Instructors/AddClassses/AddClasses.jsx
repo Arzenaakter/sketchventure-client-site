@@ -16,6 +16,7 @@ const AddClasses = () => {
       instructorName: user.displayName,
       instructorEmail: user.email,
       status: "pending",
+      feedback : ' ',
     };
     console.log(addedClassInfo);
 
