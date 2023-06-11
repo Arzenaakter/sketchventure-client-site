@@ -5,7 +5,7 @@ import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
-  // ToDO
+ 
   // const isAdmin = true;
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
@@ -29,6 +29,9 @@ const Dashboard = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-[#2D2D2D] text-white">
             {/* Sidebar content here */}
+
+
+         
             {/* admin dashboard start*/}
             {isAdmin ? (
               <>

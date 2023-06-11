@@ -9,6 +9,8 @@ import Error from "../Pages/Errorpage/Error";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
 import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
@@ -36,19 +38,19 @@ const router = createBrowserRouter([
       children:[
         {
           path:'/dashboard/manageClass',
-          element:<ManageClasses></ManageClasses>
+          element:<AdminRoute><ManageClasses></ManageClasses></AdminRoute>
         },
         {
           path:'/dashboard/manageUser',
-          element:<ManageUsers></ManageUsers>
+          element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>
         },
         {
           path:'addClass',
-          element:<AddClasses></AddClasses>
+          element:<InstructorRoute><AddClasses></AddClasses></InstructorRoute>
         },
         {
           path:'myClass',
-          element:<MyClasses></MyClasses>
+          element:<InstructorRoute><MyClasses></MyClasses></InstructorRoute>
         }
       ]
 

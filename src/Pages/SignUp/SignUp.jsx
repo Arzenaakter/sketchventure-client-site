@@ -32,7 +32,7 @@ const SignUp = () => {
         userProfile(data.name,data.photo)
         .then(()=>{
 
-          const saveUser = {name: data.name, email:data.email};
+          const saveUser = {name: data.name, email:data.email, role: 'student'};
           fetch('http://localhost:5000/users',{
             method:'POST',
             headers:{
@@ -58,15 +58,19 @@ const SignUp = () => {
             }
           })
         })
-        .catch(err=>console.log(err))
+        .catch(err=>{
+          alert(err.message)
+          console.log(err)
+        })
         
-        // update profile e
+        
 
       })
 
 
       .catch(err =>{
-        console.log(err);
+        alert(err.message)
+        console.log(err)
       })
 
 
@@ -186,7 +190,7 @@ const SignUp = () => {
               <div className="form-control mt-6">
 
               <input
-                  className="btn bg-[#ED1C24] border-0 text-white hover:text-black"
+                  className="btn common-btn"
                   type="submit"
                   value="Sign Up"
                 />
@@ -194,7 +198,7 @@ const SignUp = () => {
                 <p className="text-center">
               <small>
                 Already have an account?
-                <Link to="/signup" className="text-blue-500">
+                <Link to="/login" className="text-blue-500">
                   Login
                 </Link>
               </small>

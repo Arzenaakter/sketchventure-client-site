@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-// import { useState } from "react";
+
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 
@@ -9,6 +9,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 const ManageUsers = () => {
   const {loading} = useAuth()
  
+//  todo disbale
 
   const [axiosSecure] = useAxiosSecure();
 
@@ -18,11 +19,11 @@ const ManageUsers = () => {
         return res.data;
     },
     {
-      enabled: !loading, // Enable the query when the loading state is false
+      enabled: !loading, 
     }
     )
     
-
+ 
     // admin
     const handleMakeAdmin = id =>{
         fetch(`http://localhost:5000/users/admin/${id}`,{
@@ -30,16 +31,18 @@ const ManageUsers = () => {
         })
         .then(res=>res.json())
         .then(data=>{
+         
             if(data.modifiedCount){
-                // setIsAdmin(true)
+             
                 refetch()
                 Swal.fire({
                     position: 'top-center',
                     icon: 'success',
-                    title: 'Your are now Admin',
+                    title: 'This user is now Admin',
                     showConfirmButton: false,
                     timer: 1500
                   })
+                  
             }
         })
 
@@ -51,16 +54,18 @@ const ManageUsers = () => {
         })
         .then(res=>res.json())
         .then(data=>{
+      
             if(data.modifiedCount){
-                // setIsAdmin(true)
+             
                 refetch()
                 Swal.fire({
                     position: 'top-center',
                     icon: 'success',
-                    title: 'Your are now Instructor',
+                    title: 'This user is now Instructor',
                     showConfirmButton: false,
                     timer: 1500
                   })
+                
             }
         })
 
@@ -93,9 +98,9 @@ const ManageUsers = () => {
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>{user.role ===  'admin' ?'Admin' : user.role === 'instructor' ? 'Instructor' : ' Student'}</td>
-            <td className=" space-y-2">
-                <button className="btn btn-sm btn-success"  onClick={()=>handleMakeAdmin(user._id)}>Make Admin</button>
-                <button className="btn btn-sm btn-info" onClick={()=>handleMakeInstructor(user._id)}>Make Instructor</button>
+            <td className=" space-x-2">
+                <button className="btn btn-sm common-btn text-[12px]" disabled={user.role === 'admin' && true}   onClick={()=>handleMakeAdmin(user._id)}>Make Admin</button>
+                <button className="btn btn-sm common-btn text-[12px]" disabled={user.role === 'instructor' && true}  onClick={()=>handleMakeInstructor(user._id)}>Make Instructor</button>
             </td>
           </tr>
             )

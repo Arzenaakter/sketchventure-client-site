@@ -107,7 +107,7 @@ const onSubmit = (data) => {
               </div>
               <div className="form-control mt-6">
               <input
-                 className="btn bg-[#ED1C24] border-0 text-white hover:text-black"
+                 className="btn common-btn"
                   type="submit"
                   value="Login"
                 />

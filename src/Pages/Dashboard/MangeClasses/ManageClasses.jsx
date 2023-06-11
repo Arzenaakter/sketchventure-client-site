@@ -16,6 +16,15 @@ const ManageClasses = () => {
     },[])
 
 
+    // Approve
+    const handleApprove = id =>{
+      console.log(id);
+    }
+
+
+
+
+
 
     return (
         <div>
@@ -67,11 +76,13 @@ const ManageClasses = () => {
             <td>{classInfo.availableSeats}</td>
             <td>{classInfo.price}</td>
             <td>
-                <button  className="btn btn-info btn-sm mb-2">Approve</button>
-                <button  className="btn btn-success btn-sm">Deny</button>
+            <td>{classInfo.status ===  'approve' ?'Approved' : classInfo.status === 'deny' ? 'Denied' : ' Pending'}</td>
+              
             </td>
-            <td>
-                <button  className="btn btn-warning btn-sm">Feedback</button>
+            <td className="space-y-2 ">
+                <button onClick={()=>handleApprove(classInfo._id)}  className="btn common-btn btn-sm  text-[12px] w-20">Approve</button>
+                <button  className="btn common-btn btn-sm text-[12px] w-20">Deny</button>
+                <button  className="btn common-btn btn-sm text-[12px] w-20">Feedback</button>
             </td>
           </tr>)
 
