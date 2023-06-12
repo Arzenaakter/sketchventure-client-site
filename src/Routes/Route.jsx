@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../Layouts/Dashboard";
 import Main from "../Layouts/Main";
+import AllClass from "../Pages/AllClass/AllClass";
 import AdminFeedBack from "../Pages/Dashboard/Admin/AdminFeedBack";
 import AddClasses from "../Pages/Dashboard/Instructors/AddClassses/AddClasses";
 import MyClasses from "../Pages/Dashboard/Instructors/MyClasses/MyClasses";
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
         {
           path:'/instructor',
           element:<Instructors></Instructors>
+        },
+        {
+          path:'/classes',
+          element:<AllClass></AllClass>
+
         },
         {
           path:'login',
