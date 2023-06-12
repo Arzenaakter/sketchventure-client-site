@@ -15,7 +15,7 @@ const [AllClasses , seAllClasses] = useState([])
 const {user} = useAuth();
 const navigate = useNavigate();
 const  location = useLocation();
- const from = location.state?.from?.pathname || '/' ;
+//  const from = location.state?.from?.pathname || '/' ;
 
     useEffect(() => { 
         fetch('http://localhost:5000/AllClasses')
@@ -34,11 +34,11 @@ const  location = useLocation();
       
 
     })
- 
-  
+//  TODO Disable for admin instructor
+//   console.log(AllUsers);
 
      const handleSelect = classcard =>{
-        // console.log(classcard);
+       
 
         if(user && user.email){
 

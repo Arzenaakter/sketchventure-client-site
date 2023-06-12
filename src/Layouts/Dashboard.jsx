@@ -84,7 +84,7 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/selectedClass">
+                  <NavLink to="/dashboard/mySelectedClass">
                     <SiGoogleclassroom size={20} />
                     My Selected Classes
                   </NavLink>

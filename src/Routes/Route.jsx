@@ -7,6 +7,7 @@ import AddClasses from "../Pages/Dashboard/Instructors/AddClassses/AddClasses";
 import MyClasses from "../Pages/Dashboard/Instructors/MyClasses/MyClasses";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import ManageClasses from "../Pages/Dashboard/MangeClasses/ManageClasses";
+import MySelectedClass from "../Pages/Dashboard/Student/MySelectedClass/MySelectedClass";
 import Error from "../Pages/Errorpage/Error";
 import Home from "../Pages/Home/Home/Home";
 import Instructors from "../Pages/Instructors/Instructors";
@@ -67,7 +68,11 @@ const router = createBrowserRouter([
         {
           path:'/dashboard/myClass',
           element:<InstructorRoute><MyClasses></MyClasses></InstructorRoute>
-        }
+        },
+        {
+          path:'/dashboard/mySelectedClass',
+          element:<PrivateRoute><MySelectedClass></MySelectedClass></PrivateRoute>
+        },
       ]
 
     },
