@@ -1,12 +1,12 @@
 
 import { useForm } from "react-hook-form";
 import {  useParams } from "react-router-dom";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 
 const AdminFeedBack = () => {
     const id = useParams();
-    const { register,handleSubmit  } = useForm();
+    const { register,handleSubmit,reset  } = useForm();
      
    
    
@@ -23,15 +23,16 @@ const AdminFeedBack = () => {
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
-            //   if (data.modifiedCount) {
-            //     Swal.fire({
-            //       position: "top-center",
-            //       icon: "success",
-            //       title: "Feedback is submitted ",
-            //       showConfirmButton: false,
-            //       timer: 1500,
-            //     });
-            //   }
+                reset()
+              if (data.modifiedCount) {
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: "Feedback is submitted ",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
             });
 
 

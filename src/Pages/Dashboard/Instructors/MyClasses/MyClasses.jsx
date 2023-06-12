@@ -13,9 +13,9 @@ const MyClasses = () => {
         queryKey : ['classes' , user?.email],
       
         queryFn: async()=>{
-            const res = await axiosSecure(`/addClasses/${user?.email}`)
-            console.log('res from axios', res);
-            // return res.data;
+            const res = await axiosSecure.get(`/addClasses/${user?.email}`)
+            // console.log('res from axios', res);
+            return res.data;
         },
     })
     
@@ -37,9 +37,6 @@ const MyClasses = () => {
 
     }
 
-
-
-console.log('Myclasses',Myclasses );
 
     
     return (

@@ -131,7 +131,7 @@ const ManageClasses = () => {
                     Deny
                   </button>
 {/* TODO */}
-                  <Link to={`/dashboard/adminFeedBack/${classInfo._id}`} feedbackInfo={classInfo}><button  className="btn common-btn btn-sm text-[12px] w-20">Feedback</button></Link>
+                  <Link to={`/dashboard/adminFeedBack/${classInfo._id}`} feedbackInfo={classInfo}><button  className="btn common-btn btn-sm text-[12px] w-20 mt-2">Feedback</button></Link>
                   
                 </td>
               </tr>
