@@ -98,7 +98,7 @@ const ManageUsers = () => {
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>{user.role ===  'admin' ?'Admin' : user.role === 'instructor' ? 'Instructor' : ' Student'}</td>
-            <td className=" space-x-2">
+            <td className="gap-2 flex">
                 <button className="btn btn-sm common-btn text-[12px]" disabled={user.role === 'admin' && true}   onClick={()=>handleMakeAdmin(user._id)}>Make Admin</button>
                 <button className="btn btn-sm common-btn text-[12px]" disabled={user.role === 'instructor' && true}  onClick={()=>handleMakeInstructor(user._id)}>Make Instructor</button>
             </td>

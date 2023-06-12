@@ -1,7 +1,9 @@
+
+import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 
@@ -11,26 +13,64 @@ const AllClass = () => {
 const [AllClasses , seAllClasses] = useState([])
 
 const {user} = useAuth();
-const navigate = useNavigate()
+const navigate = useNavigate();
+const  location = useLocation();
+ const from = location.state?.from?.pathname || '/' ;
 
     useEffect(() => { 
         fetch('http://localhost:5000/AllClasses')
         .then(res => res.json())
         .then(data =>seAllClasses(data))
      }, [])
+  
+    //  get all users  
+    const {data: AllUsers=[]} = useQuery({
+        queryKey: ['AllUsers'],
+        queryFn: async()=>{
+            const res = await fetch('http://localhost:5000/Allusers');
+            return res.json();
 
+        }
+      
 
-     const handleSelect = id =>{
-        console.log(id);
-        if(!user){
-            Swal.fire('Please log in before selecting the course')
-            navigate('/login');
+    })
+ 
+  
+
+     const handleSelect = classcard =>{
+        // console.log(classcard);
+
+        if(user && user.email){
+
+            const selectedCourse = {email:user.email,std_id: classcard._id,className:classcard.className, classImage:classcard.classImage, InstructorName:classcard.instructorName, InstructorEmail:classcard.instructorEmail,price:classcard.price, seats: classcard.availableSeats};
+
+            fetch('http://localhost:5000/selectedClasses',{
+                method: 'POST',
+                headers: {
+                    'content-type' : 'application/json'
+                },
+                body: JSON.stringify(selectedCourse)
+            })
+            .then(res=>res.json())
+            .then(data =>{
+                if(data.insertedId){
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Course selected',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                }
+            })
+        }
+        else{
+            Swal.fire('Please log in before selecting the course');
+            navigate('/login', {state: {from:location}});
             
         }
      }
-  
-
-
+    // const adminOrIns = AllUsers.map(user => user.role == 'admin' || user.role == 'instructor')
 
     return (
         <div className="my-10">
@@ -45,7 +85,15 @@ const navigate = useNavigate()
                       <p>Price: ${classcard.price}</p>
                       <p>Available Seats: {classcard.availableSeats}</p>
                       <div className="card-actions justify-end">
-                        <button onClick={()=>handleSelect(classcard._id)} className="btn common-btn btn-sm" disabled={classcard.availableSeats == 0 && true }>Select</button>
+                      
+                      <button
+                  onClick={() => handleSelect(classcard)}
+                  className="btn common-btn btn-sm"
+                  disabled={classcard.availableSeats == 0  && true}
+                >
+                                Select</button>
+
+                      
                       </div>
                     </div>
                   </div>)
