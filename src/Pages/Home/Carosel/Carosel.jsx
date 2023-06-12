@@ -4,7 +4,7 @@ const Carosel = () => {
   return (
     <div className=" mx-auto px-8 lg:px-0">
       <div className="carousel w-full ">
-        <div id="item1" className="carousel-item w-full ">
+        <div id="item1" className="carousel-item  ">
           <div className="">
             <img
               src="https://i.ibb.co/PhWjYDB/240-F-71384111-r-Am-DE2wom-Ug-CEEWn-Pi-Ne0-VMQGc-Pupa-DW.jpg"

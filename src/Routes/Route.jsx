@@ -8,6 +8,7 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import ManageClasses from "../Pages/Dashboard/MangeClasses/ManageClasses";
 import Error from "../Pages/Errorpage/Error";
 import Home from "../Pages/Home/Home/Home";
+import Instructors from "../Pages/Instructors/Instructors";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import AdminRoute from "./AdminRoute";
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         {
             path:'/',
             element:<Home></Home>
+        },
+        {
+          path:'/instructor',
+          element:<Instructors></Instructors>
         },
         {
           path:'login',
