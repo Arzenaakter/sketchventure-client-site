@@ -46,15 +46,15 @@ const router = createBrowserRouter([
           element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>
         },
         {
-          path:'/dashboard/adminFeedBack',
+          path:'/dashboard/adminFeedBack/:id',
           element:<AdminFeedBack></AdminFeedBack>
         },
         {
-          path:'addClass',
+          path:'/dashboard/addClass',
           element:<InstructorRoute><AddClasses></AddClasses></InstructorRoute>
         },
         {
-          path:'myClass',
+          path:'/dashboard/myClass',
           element:<InstructorRoute><MyClasses></MyClasses></InstructorRoute>
         }
       ]

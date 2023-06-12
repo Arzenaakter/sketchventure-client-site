@@ -57,7 +57,7 @@ const Dashboard = () => {
             ) : isInstructor ? (
               <>
                 <li>
-                  <NavLink to="/dashboard/insructor">
+                  <NavLink to="/dashboard/instructor">
                     <FaHome size={20} />
                     Instructor Home
                   </NavLink>
@@ -78,19 +78,19 @@ const Dashboard = () => {
             ) : (
               <>
                 <li>
-                  <NavLink to="/dashboard/">
+                  <NavLink to="/dashboard">
                     <FaHome size={20} />
                     Student Home
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/addClass">
+                  <NavLink to="/dashboard/selectedClass">
                     <SiGoogleclassroom size={20} />
                     My Selected Classes
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/myClass">
+                  <NavLink to="/dashboard/enrolledClass">
                     <FaUsers size={20} /> My Enrolled Classes
                   </NavLink>
                 </li>
