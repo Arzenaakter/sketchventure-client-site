@@ -21,21 +21,21 @@ const MyClasses = () => {
     
 
     // update 
-    const handleUpdate = id =>{
-    //    TODO
-        fetch(`http://localhost:5000/addClasses/myclass/${id}`,{
-            method:"PUT",
-            headers:{
-                'content-type' : 'application/json'
-            },
-            body:JSON.stringify()
-        })
-        .then(res => res.json())
-        .then(data =>{
-            console.log(data);
-        })
+    // const handleUpdate = id =>{
+    // //    TODO
+    //     fetch(`http://localhost:5000/addClasses/myclass/${id}`,{
+    //         method:"PUT",
+    //         headers:{
+    //             'content-type' : 'application/json'
+    //         },
+    //         body:JSON.stringify()
+    //     })
+    //     .then(res => res.json())
+    //     .then(data =>{
+    //         console.log(data);
+    //     })
 
-    }
+    // }
 
 
     
@@ -64,7 +64,7 @@ const MyClasses = () => {
             <td>0</td>
             <td>{classes.feedback}</td>
             <td>
-                <button className="btn btn-sm common-btn" onClick={()=>handleUpdate(classes._id)}>Update</button>
+                <button className="btn btn-sm common-btn" >Update</button>
             </td>
          
           
