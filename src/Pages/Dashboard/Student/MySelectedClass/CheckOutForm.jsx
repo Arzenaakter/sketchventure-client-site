@@ -1,7 +1,9 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import './CheckOutForm.css'
 
 
 const CheckOutForm = ({selectedClass}) => {
@@ -47,7 +49,7 @@ const CheckOutForm = ({selectedClass}) => {
         if(card === null){
             return;
         }
-        const {error, paymentMethod} = await stripe.createPaymentMethod({
+        const {error} = await stripe.createPaymentMethod({
             type: 'card',
             card
         })
@@ -55,7 +57,7 @@ const CheckOutForm = ({selectedClass}) => {
             console.log('error', error);
             setCardError(error.message)
         }else{
-            // console.log('paymentMethod', paymentMethod);
+          
             setCardError('')
         }
         setProccessing(true)
@@ -78,12 +80,20 @@ const CheckOutForm = ({selectedClass}) => {
             email:user?.email,
             std_name: user?.displayName,
             transactionId:transactionId.id,
+            date: new Date(),
             price:price,
             InstructorName:InstructorName,
             className: className,
             std_id: std_id,
             selectedClass_id: _id
         }
+        axiosSecure.post('/payments',payment)
+        .then(res =>{
+           
+            if(res.data.deletedResult.insertedId){
+                Swal.fire('Payment successful')
+            }
+        })
     }
     console.log(paymentIntent);
     }
