@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaUsers } from "react-icons/fa";
 import { SiGoogleclassroom } from "react-icons/si";
+import { RiFileHistoryFill } from "react-icons/ri";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 
@@ -11,10 +12,10 @@ const Dashboard = () => {
   const [isInstructor] = useInstructor();
 
   return (
-    <div>
+    <div className="">
       <div className="drawer lg:drawer-open  ">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content flex flex-col items-center justify-center ">
           {/* Page content here */}
 
           <Outlet></Outlet>
@@ -94,6 +95,11 @@ const Dashboard = () => {
                     <FaUsers size={20} /> My Enrolled Classes
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink to="/dashboard/paymentHistory">
+                    <RiFileHistoryFill size={20} /> Payment History
+                  </NavLink>
+                </li>
               </>
             )}
 
@@ -106,13 +112,13 @@ const Dashboard = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/">
+              <NavLink to="/instructor">
                 <FaUsers size={20} />
                 Instructors
               </NavLink>
             </li>
             <li>
-              <NavLink to="/">
+              <NavLink to="/classes">
                 {" "}
                 <SiGoogleclassroom size={20} />
                 Classes

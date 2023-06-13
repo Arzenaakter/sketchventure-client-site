@@ -79,7 +79,7 @@ const CheckOutForm = ({selectedClass}) => {
         const payment ={
             email:user?.email,
             std_name: user?.displayName,
-            transactionId:transactionId.id,
+            transactionId:paymentIntent.id,
             date: new Date(),
             price:price,
             InstructorName:InstructorName,
