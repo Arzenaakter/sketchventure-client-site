@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+// import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 
@@ -13,29 +14,35 @@ const AllClass = () => {
 const [AllClasses , seAllClasses] = useState([])
 
 const {user} = useAuth();
+// const [axiosSecure] = useAxiosSecure();
 const navigate = useNavigate();
 const  location = useLocation();
 //  const from = location.state?.from?.pathname || '/' ;
 
     useEffect(() => { 
+
+        // axiosSecure.get('/AllClasses')
+        // .then(res =>{
+        //     seAllClasses(res.data);
+        // })
+
         fetch('http://localhost:5000/AllClasses')
         .then(res => res.json())
         .then(data =>seAllClasses(data))
      }, [])
   
     //  get all users  
-    const {data: AllUsers=[]} = useQuery({
-        queryKey: ['AllUsers'],
+    const {data: userRole=[]} = useQuery({
+        queryKey: ['userRole',user?.role],
         queryFn: async()=>{
-            const res = await fetch('http://localhost:5000/Allusers');
+            const res = await fetch(`http://localhost:5000/Allusers/${user?.email}`);
             return res.json();
 
         }
       
 
     })
-//  TODO Disable for admin instructor
-//   console.log(AllUsers);
+
 
      const handleSelect = classcard =>{
        
@@ -70,7 +77,7 @@ const  location = useLocation();
             
         }
      }
-    // const adminOrIns = AllUsers.map(user => user.role == 'admin' || user.role == 'instructor')
+  
 
     return (
         <div className="my-10">
@@ -89,7 +96,7 @@ const  location = useLocation();
                       <button
                   onClick={() => handleSelect(classcard)}
                   className="btn common-btn btn-sm"
-                  disabled={classcard.availableSeats == 0  && true}
+                  disabled={classcard.availableSeats == 0 || userRole?.at(0)?.role === 'admin' || userRole?.at(0)?.role === 'instructor' }
                 >
                                 Select</button>
 

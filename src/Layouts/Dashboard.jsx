@@ -78,7 +78,7 @@ const Dashboard = () => {
             ) : (
               <>
                 <li>
-                  <NavLink to="/dashboard">
+                  <NavLink to="/dashboard/student">
                     <FaHome size={20} />
                     Student Home
                   </NavLink>

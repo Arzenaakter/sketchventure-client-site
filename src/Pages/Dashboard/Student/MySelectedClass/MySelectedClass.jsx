@@ -1,22 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../../../hooks/useAuth";
+
 import { FaTrashAlt } from 'react-icons/fa';
 import { MdPayments } from 'react-icons/md';
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import useSelectedClass from '../../../../hooks/useSelectedClass';
+
 
 const MySelectedClass = () => {
-    const {user} = useAuth()
 
-
-    const {data: selectedClass =[],refetch} = useQuery({
-        queryKey: ['selectedClass', user?.email],
-        queryFn: async()=>{
-            const res = await fetch(`http://localhost:5000/mySelectedClass?email=${user?.email}`);
-     
-            return res.json();
-
-        }
-    })
+  const [selectedClass,refetch] = useSelectedClass()
+    
 
 const handleDelete = id =>{
     Swal.fire({
@@ -61,6 +54,7 @@ const handleDelete = id =>{
         <th>#</th>
         <th>Course Name</th>
         <th>Instructor Name</th>
+        <th>Course price</th>
         <th>Pay</th>
         <th>Delete</th>
       </tr>
@@ -70,8 +64,19 @@ const handleDelete = id =>{
         <th>{index + 1}</th>
         <td>{selected.className}</td>
         <td>{selected.InstructorName}</td>
+        <td>$ {selected.price}</td>
  
-        <td><button><MdPayments  color="green" size={26} /></button></td>
+        <td>
+            {/* <Link to='/dashboard/paymentPage'
+            state={{price:selected.price, Class_id:selected._id,ClassName:selected.className,InstructorName: selected.InstructorName}}
+            > */}
+            <Link to='/dashboard/paymentPage'
+            state={{selectedClass:selected}}
+            >
+              <button><MdPayments  color="green" size={26} />
+              
+              </button></Link>
+        </td>
         <td><button onClick={()=> handleDelete(selected._id)}><FaTrashAlt color="red" size={22} /></button></td>
       
       </tr>)}

@@ -17,6 +17,7 @@ const AddClasses = () => {
       instructorEmail: user.email,
       status: "pending",
       feedback : ' ',
+      enrolledStudent: 0,
     };
     console.log(addedClassInfo);
 
@@ -131,7 +132,7 @@ const AddClasses = () => {
                   <span className="label-text">Price</span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   id="price"
                   className="input input-bordered relative"
                   {...register("price", { required: true, min: 0 })}
