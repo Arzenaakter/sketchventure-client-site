@@ -3,6 +3,7 @@ import Dashboard from "../Layouts/Dashboard";
 import Main from "../Layouts/Main";
 import AllClass from "../Pages/AllClass/AllClass";
 import AdminFeedBack from "../Pages/Dashboard/Admin/AdminFeedBack";
+import DashboardContent from "../Pages/Dashboard/DashboardContent/DashboardContent";
 import AddClasses from "../Pages/Dashboard/Instructors/AddClassses/AddClasses";
 import MyClasses from "../Pages/Dashboard/Instructors/MyClasses/MyClasses";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
@@ -52,10 +53,36 @@ const router = createBrowserRouter([
       path:'/dashboard',
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
+
+        {
+          path:'/dashboard/admin',
+          element:<DashboardContent></DashboardContent>
+
+
+        },
+        {
+          path:'/dashboard/instructor',
+          element:<DashboardContent></DashboardContent>
+
+
+        },
+        {
+          path:'/dashboard/student',
+          element:<DashboardContent></DashboardContent>
+
+
+        },
+        {
+          path:'/dashboard/admin',
+          element:<DashboardContent></DashboardContent>
+
+
+        },
         {
           path:'/dashboard/manageClass',
           element:<AdminRoute><ManageClasses></ManageClasses></AdminRoute>
         },
+
         {
           path:'/dashboard/manageUser',
           element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>
