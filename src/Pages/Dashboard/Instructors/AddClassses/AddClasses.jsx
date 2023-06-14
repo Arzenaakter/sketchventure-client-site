@@ -9,17 +9,16 @@ const AddClasses = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
-    // TODO
-
     const addedClassInfo = {
       ...data,
       instructorName: user.displayName,
       instructorEmail: user.email,
       status: "pending",
-      feedback : ' ',
+      feedback: '',
       enrolledStudent: 0,
+      availableSeats: parseInt(data.availableSeats) // Convert availableSeats to numeric value
     };
-    console.log(addedClassInfo);
+    console.log(typeof(addedClassInfo.enrolledStudent));
 
 
     fetch('http://localhost:5000/addClasses',{
@@ -43,11 +42,6 @@ const AddClasses = () => {
     })
 
 
-
-
-
-
-
     reset();
   };
 
@@ -62,7 +56,7 @@ const AddClasses = () => {
               className="card-body w-full "
               onSubmit={handleSubmit(onSubmit)}>
               {/*  */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
                 {/* instructor email */}
               <div className="form-control">
                 <label className="label">

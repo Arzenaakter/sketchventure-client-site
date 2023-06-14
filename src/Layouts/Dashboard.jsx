@@ -18,7 +18,11 @@ const Dashboard = () => {
         <div className="drawer-content flex flex-col items-center justify-center ">
           {/* Page content here */}
 
-          <Outlet></Outlet>
+     <div className="container mx-auto">
+        
+     <Outlet></Outlet>
+     </div>
+     
 
           <label
             htmlFor="my-drawer-2"

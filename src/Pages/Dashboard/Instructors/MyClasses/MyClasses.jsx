@@ -61,7 +61,7 @@ const MyClasses = () => {
             <th>{index + 1}</th>
             <td>{classes.className}</td>
             <td>{classes.status}</td>
-            <td>0</td>
+            <td>{classes.enrolledStudent}</td>
             <td>{classes.feedback}</td>
             <td>
                 <button className="btn btn-sm common-btn" >Update</button>

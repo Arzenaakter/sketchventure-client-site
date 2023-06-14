@@ -9,6 +9,7 @@ import useSelectedClass from '../../../../hooks/useSelectedClass';
 const MySelectedClass = () => {
 
   const [selectedClass,refetch] = useSelectedClass()
+  
     
 
 const handleDelete = id =>{
@@ -67,9 +68,7 @@ const handleDelete = id =>{
         <td>$ {selected.price}</td>
  
         <td>
-            {/* <Link to='/dashboard/paymentPage'
-            state={{price:selected.price, Class_id:selected._id,ClassName:selected.className,InstructorName: selected.InstructorName}}
-            > */}
+           
             <Link to='/dashboard/paymentPage'
             state={{selectedClass:selected}}
             >

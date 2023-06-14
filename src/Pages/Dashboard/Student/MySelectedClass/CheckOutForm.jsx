@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-import './CheckOutForm.css'
+
 
 
 const CheckOutForm = ({selectedClass}) => {
  
-    const {price,className,InstructorName,std_id,_id} = selectedClass;
+    const {price,className,InstructorName,std_id,_id,availableSeats} = selectedClass;
 
   
 
@@ -39,6 +39,7 @@ const CheckOutForm = ({selectedClass}) => {
 
 
     const handleSubmit = async (event) =>{
+     
         event.preventDefault()
         if(!stripe || !elements){
             return 
@@ -84,8 +85,9 @@ const CheckOutForm = ({selectedClass}) => {
             price:price,
             InstructorName:InstructorName,
             className: className,
-            std_id: std_id,
-            selectedClass_id: _id
+            std_id: _id ,
+            selectedClass_id: std_id,
+            availableSeats:availableSeats,
         }
         axiosSecure.post('/payments',payment)
         .then(res =>{
@@ -95,7 +97,7 @@ const CheckOutForm = ({selectedClass}) => {
             }
         })
     }
-    console.log(paymentIntent);
+   
     }
 
 

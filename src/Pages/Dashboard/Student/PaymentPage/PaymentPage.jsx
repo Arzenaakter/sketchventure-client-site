@@ -11,7 +11,7 @@ const PaymentPage = () => {
     const location = useLocation();
     // const { price,Class_id,ClassName,InstructorName } = location.state || {}
     const { selectedClass } = location.state || {}
-    // console.log(selectedClass);
+    console.log(selectedClass);
    
 
 

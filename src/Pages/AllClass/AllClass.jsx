@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
-// import useAxiosSecure from "../../hooks/useAxiosSecure";
+
 
 
 
@@ -14,17 +14,14 @@ const AllClass = () => {
 const [AllClasses , seAllClasses] = useState([])
 
 const {user} = useAuth();
-// const [axiosSecure] = useAxiosSecure();
+
 const navigate = useNavigate();
 const  location = useLocation();
 //  const from = location.state?.from?.pathname || '/' ;
 
     useEffect(() => { 
 
-        // axiosSecure.get('/AllClasses')
-        // .then(res =>{
-        //     seAllClasses(res.data);
-        // })
+    
 
         fetch('http://localhost:5000/AllClasses')
         .then(res => res.json())
@@ -45,11 +42,12 @@ const  location = useLocation();
 
 
      const handleSelect = classcard =>{
+        console.log(typeof(classcard.availableSeats));
        
 
         if(user && user.email){
 
-            const selectedCourse = {email:user.email,std_id: classcard._id,className:classcard.className, classImage:classcard.classImage, InstructorName:classcard.instructorName, InstructorEmail:classcard.instructorEmail,price:classcard.price, seats: classcard.availableSeats};
+            const selectedCourse = {email:user.email,std_id: classcard._id,className:classcard.className, classImage:classcard.classImage, InstructorName:classcard.instructorName, InstructorEmail:classcard.instructorEmail,price:classcard.price, availableSeats: classcard.availableSeats};
 
             fetch('http://localhost:5000/selectedClasses',{
                 method: 'POST',
