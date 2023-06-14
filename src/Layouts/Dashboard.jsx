@@ -4,7 +4,7 @@ import { SiGoogleclassroom } from "react-icons/si";
 import { RiFileHistoryFill } from "react-icons/ri";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
-import DashboardContent from "../Pages/Dashboard/DashboardContent/DashboardContent";
+
 
 const Dashboard = () => {
  
@@ -21,7 +21,6 @@ const Dashboard = () => {
 
 
 
-          <DashboardContent></DashboardContent>
 
      <div className="container mx-auto">
         
