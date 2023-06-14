@@ -1,10 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
+import useAuth from "./useAuth";
 
 const usePayment = () => {
+    const {user} = useAuth()
+
     const {data: paymentHistory =[]} = useQuery({
-        queryKey: ['paymentHistory'],
+        queryKey: ['paymentHistory',user?.email],
         queryFn: async()=>{
-            const res = await fetch(`http://localhost:5000/payment-history`);
+            const res = await fetch(`https://summer-camp-server-side-xi.vercel.app/payment-history/${user?.email}`);
             return res.json();
 
         }

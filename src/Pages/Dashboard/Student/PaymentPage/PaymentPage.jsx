@@ -9,7 +9,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_KEY);
 
 const PaymentPage = () => {
     const location = useLocation();
-    // const { price,Class_id,ClassName,InstructorName } = location.state || {}
+    
     const { selectedClass } = location.state || {}
     console.log(selectedClass);
    
@@ -22,7 +22,7 @@ const PaymentPage = () => {
                 </Slide>
       
          <Elements stripe={stripePromise}>
-            {/* <CheckOutForm price={price} Class_id={Class_id} ClassName={ClassName} InstructorName={}> */}
+            
             <CheckOutForm selectedClass={selectedClass}>
 
             </CheckOutForm>

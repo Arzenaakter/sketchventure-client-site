@@ -12,7 +12,7 @@ const ManageClasses = () => {
  
 
   useEffect(() => {
-    fetch("http://localhost:5000/addClasses")
+    fetch("https://summer-camp-server-side-xi.vercel.app/addClasses")
       .then((res) => res.json())
       .then((data) => setClasses(data));
   }, [classes]);
@@ -21,7 +21,7 @@ const ManageClasses = () => {
   const handleApprove = (id) => {
     console.log(id, "approve");
 
-    fetch(`http://localhost:5000/addClasses/approve/${id}`, {
+    fetch(`https://summer-camp-server-side-xi.vercel.app/addClasses/approve/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -42,7 +42,7 @@ const ManageClasses = () => {
   const handleDeny = (id) => {
     console.log(id, "deny");
 
-    fetch(`http://localhost:5000/addClasses/deny/${id}`, {
+    fetch(`https://summer-camp-server-side-xi.vercel.app/addClasses/deny/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

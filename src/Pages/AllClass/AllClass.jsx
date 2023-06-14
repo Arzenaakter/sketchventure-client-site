@@ -23,7 +23,7 @@ const  location = useLocation();
 
     
 
-        fetch('http://localhost:5000/AllClasses')
+        fetch('https://summer-camp-server-side-xi.vercel.app/AllClasses')
         .then(res => res.json())
         .then(data =>seAllClasses(data))
      }, [])
@@ -32,7 +32,7 @@ const  location = useLocation();
     const {data: userRole=[]} = useQuery({
         queryKey: ['userRole',user?.role],
         queryFn: async()=>{
-            const res = await fetch(`http://localhost:5000/Allusers/${user?.email}`);
+            const res = await fetch(`https://summer-camp-server-side-xi.vercel.app/Allusers/${user?.email}`);
             return res.json();
 
         }
@@ -49,7 +49,7 @@ const  location = useLocation();
 
             const selectedCourse = {email:user.email,std_id: classcard._id,className:classcard.className, classImage:classcard.classImage, InstructorName:classcard.instructorName, InstructorEmail:classcard.instructorEmail,price:classcard.price, availableSeats: classcard.availableSeats};
 
-            fetch('http://localhost:5000/selectedClasses',{
+            fetch('https://summer-camp-server-side-xi.vercel.app/selectedClasses',{
                 method: 'POST',
                 headers: {
                     'content-type' : 'application/json'
@@ -78,7 +78,7 @@ const  location = useLocation();
   
 
     return (
-        <div className="my-10">
+        <div className="my-20 px-10 lg:px-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {
                     AllClasses.map(classcard =><div key={classcard._id} className={classcard.availableSeats == 0 ? 'card card-compact w-full bg-red-500 shadow-xl':'card card-compact w-full bg-base-100 shadow-xl'}>

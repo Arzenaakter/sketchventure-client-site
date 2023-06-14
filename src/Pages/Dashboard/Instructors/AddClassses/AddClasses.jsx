@@ -21,7 +21,7 @@ const AddClasses = () => {
     console.log(typeof(addedClassInfo.enrolledStudent));
 
 
-    fetch('http://localhost:5000/addClasses',{
+    fetch('https://summer-camp-server-side-xi.vercel.app/addClasses',{
       method:'POST',
       headers:{
         'content-type' : 'application/json'

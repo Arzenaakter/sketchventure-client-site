@@ -23,7 +23,7 @@ const MyClasses = () => {
     // update 
     // const handleUpdate = id =>{
     // //    TODO
-    //     fetch(`http://localhost:5000/addClasses/myclass/${id}`,{
+    //     fetch(`https://summer-camp-server-side-xi.vercel.app/addClasses/myclass/${id}`,{
     //         method:"PUT",
     //         headers:{
     //             'content-type' : 'application/json'

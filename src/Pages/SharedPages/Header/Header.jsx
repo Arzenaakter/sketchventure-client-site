@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
+import DarkMode from "./DarkMode";
 
 const Header = () => {
   const { user, LogOut } = useAuth();
@@ -95,7 +96,7 @@ const Header = () => {
             {/* small device menu */}
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 p-2 bg-[#2D2D2D] text-white rounded-box w-52">
+              className="menu menu-sm dropdown-content mt-3 p-2 z-10 bg-[#2D2D2D] text-white rounded-box w-52">
               {navLinks}
             </ul>
           </div>
@@ -108,7 +109,11 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
-        <div className="navbar-end"></div>
+        <div className="navbar-end   flex">
+          <div className=" flex-shrink">
+          <DarkMode></DarkMode>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ const Instructors = () => {
     const [instructors, setInstructor] = useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:5000/users/instructors')
+        fetch('https://summer-camp-server-side-xi.vercel.app/users/instructors')
         .then(res => res.json())
         .then(data =>setInstructor(data))
     },[])
@@ -15,7 +15,7 @@ const Instructors = () => {
 
 
     return (
-        <div className="my-10">
+        <div className="my-20 px-10 lg:px-0">
             <h1 className="font-bold text-center text-4xl mb-5">Total Instructor : {instructors.length}</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5">
                 {

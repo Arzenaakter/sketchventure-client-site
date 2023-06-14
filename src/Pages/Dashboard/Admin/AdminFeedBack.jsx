@@ -13,7 +13,7 @@ const AdminFeedBack = () => {
     const onSubmit = (data) => {
 
         console.log(id.id);
-        fetch(`http://localhost:5000/addClasses/feedback/${id.id}`, {
+        fetch(`https://summer-camp-server-side-xi.vercel.app/addClasses/feedback/${id.id}`, {
             method: "PUT",
             headers:{
                 'content-type':'application/json'
