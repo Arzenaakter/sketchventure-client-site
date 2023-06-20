@@ -42,7 +42,7 @@ const  location = useLocation();
 
 
      const handleSelect = classcard =>{
-        console.log(typeof(classcard.availableSeats));
+        // console.log(typeof(classcard.availableSeats));
        
 
         if(user && user.email){
