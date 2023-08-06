@@ -10,7 +10,7 @@ const Contact = () => {
                 initial={{opacity:0}}
                  whileInView={{ opacity: 1 }} transition={{duration: 1.5}}
                 className="container mx-auto bg-white md:py-10 flex md:flex-row flex-col gap-20 md:h-[320px] h-auto">
-                <div className="  bg-[#ED1C24]  z-10 md:w-[40%] w-[100%] p-5 md:-ms-16 shadow-xl space-y-3">
+                <div className="  bg-[#8a1014]   z-10 md:w-[40%] w-[100%] p-5 md:-ms-16 shadow-xl space-y-3">
                     <h4 className="text-center py-2 font-semibold">Contact Information </h4>
                     <p className='flex  items-center gap-2'><AiOutlineMail size={24}/> arzenaakter@gmail.com </p>
                     <p className='flex  items-center gap-2'><BiPhone size={ 24} /> +8801766179470 </p>

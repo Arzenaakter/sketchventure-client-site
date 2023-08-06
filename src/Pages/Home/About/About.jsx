@@ -26,7 +26,7 @@ With this vision in mind, we embarked on a journey to create SketchVenture, a pl
                             <img className="w-96" src="https://img.freepik.com/free-photo/mosaic-puzzle-art-kids-children-s-creative-game_155003-16243.jpg?size=626&ext=jpg&ga=GA1.2.2001766054.1688998742&semt=ais" alt="" />
                         </div>
                         <div className="z-10 -mt-24 ms-16">
-                            <img className="w-96" src="https://img.freepik.com/free-photo/mosaic-puzzle-art-kids-children-s-creative-game_155003-16243.jpg?size=626&ext=jpg&ga=GA1.2.2001766054.1688998742&semt=ais" alt="" />
+                            <img className="w-96" src="https://img.freepik.com/free-photo/people-meeting-community-center_23-2149155276.jpg?size=626&ext=jpg&ga=GA1.2.2001766054.1688998742&semt=ais" alt="" />
                         </div>
                     </div>
 
