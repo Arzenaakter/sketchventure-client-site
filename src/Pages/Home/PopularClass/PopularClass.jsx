@@ -1,6 +1,6 @@
-import { Fade, Slide } from "react-awesome-reveal";
-import useApproveClass from "../../../hooks/useApproveClass";
 
+import useApproveClass from "../../../hooks/useApproveClass";
+import { motion } from "framer-motion";
 
 const PopularClass = () => {
     const [Popular] = useApproveClass()
@@ -12,15 +12,20 @@ const PopularClass = () => {
 
 
 
-    return (
-        <div className="my-20 px-10 lg:px-0">
-             <Slide>
-                  <h3 className="text-3xl  font-bold text-center mb-5 ">Popular Classes</h3>
-                </Slide>
-                <Fade  cascade damping={1e-1}>
+  return (
+      <section>
+        <div className="my-10 px-10 lg:px-0 container mx-auto">
+            
+         <motion.h3 className="text-3xl  font-bold text-center mb-5 mt-10 " initial={{opacity: 0}}
+            whileInView={{opacity: 1}}
+            transition={{duration:1.5}}>Popular Classes</motion.h3>
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {
-                        slicedArray.map(popularClass=><div key={popularClass._id} className="card w-full bg-base-100 shadow-xl">
+            slicedArray.map(popularClass => <motion.div
+              whileHover={{scale: 0.8}} initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }} transition={{duration: 1.5}}
+              key={popularClass._id} className="card w-full bg-base-100 shadow-xl">
                         <figure className="px-10 pt-10">
                           <img src={popularClass.classImage} alt="classImage" className="rounded-xl" />
                         </figure>
@@ -31,14 +36,14 @@ const PopularClass = () => {
                           <p>Enrolled Student: {popularClass.enrolledStudent}</p>
                           
                         </div>
-                      </div>
+                      </motion.div>
                         )
                     }
 
                 </div>
-                </Fade>
             
-        </div>
+            
+        </div></section>
     );
 };
 

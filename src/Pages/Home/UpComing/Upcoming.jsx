@@ -1,4 +1,4 @@
-import { Slide } from "react-awesome-reveal";
+import { motion } from "framer-motion";
 
 
 const Upcoming = () => {
@@ -38,27 +38,33 @@ const Upcoming = () => {
 
 
 
-    return (
-        <div className="my-20 px-10 lg:px-0">
-             <Slide>
-                  <h3 className="text-3xl  font-bold text-center mb-5 ">UpComing Classes</h3>
-                </Slide>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+  return (
+      <section>
+        <div className="my-20 px-10 lg:px-0 container mx-auto">
+             
+        
+   <motion.h3 className="text-3xl  font-bold text-center mb-5 mt-10 " initial={{opacity: 0}}
+            whileInView={{opacity: 1}}
+            transition={{duration:1.5}}>UpComing Classes</motion.h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {
-                        upComingClasses.map((classes,index) =><div key={index} className='flex-col   '>
+            upComingClasses.map((classes, index) => <motion.div
+              whileHover={{scale: 0.8}} initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }} transition={{duration: 1.5}}
+              key={index} className='flex-col   '>
                             <img src={classes.classImage} alt="" className="h-3/4 w-full" />
-                            <div className="border-2 mt-2 border-black hover:bg-slate-600 hover:text-white py-4">
-                                <h1 className="font-bold text-xl">Class Name: {classes.className}</h1>
+                            <div className="border px-2 mt-2 border-black hover:bg-slate-600 hover:text-white py-4">
+                                <h1 className="font-semibold ">Class Name: {classes.className}</h1>
                                 <p>Price: ${classes.Price}</p>
                             </div>
 
-                        </div>)
+                        </motion.div>)
                     }
 
                 </div>
                
                 
-        </div>
+        </div></section>
     );
 };
 

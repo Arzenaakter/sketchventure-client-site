@@ -14,7 +14,7 @@
 * After that he/she can check her/his payment history 
 
 * Technologies:
-   * HTML, CSS, Tailwind, React Js, Express Js, MongoDb,Firebase authentication, JWT token etc.
+   * HTML, CSS, Tailwind, daisy UI, React Js, Express Js, MongoDb,Firebase authentication, JWT token etc,framer motion, stripe, axios.
 
 * Live Link:  https://summer-camp-44ba3.web.app/
 * Server Side: 
