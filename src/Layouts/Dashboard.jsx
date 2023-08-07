@@ -5,9 +5,7 @@ import { RiFileHistoryFill } from "react-icons/ri";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 
-
 const Dashboard = () => {
- 
   // const isAdmin = true;
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
@@ -19,14 +17,9 @@ const Dashboard = () => {
         <div className="drawer-content flex flex-col items-center justify-center ">
           {/* Page content here */}
 
-
-
-
-     <div className="container mx-auto">
-        
-     <Outlet></Outlet>
-     </div>
-     
+          <div className="container mx-auto">
+            <Outlet></Outlet>
+          </div>
 
           <label
             htmlFor="my-drawer-2"
@@ -39,8 +32,6 @@ const Dashboard = () => {
           <ul className="menu p-4 w-80 h-full bg-[#2D2D2D] text-white">
             {/* Sidebar content here */}
 
-
-         
             {/* admin dashboard start*/}
             {isAdmin ? (
               <>

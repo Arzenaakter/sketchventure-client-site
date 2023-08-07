@@ -15,7 +15,8 @@ const Instructors = () => {
 
 
     return (
-        <div className="my-20 px-10 lg:px-0">
+        <section>
+        <div className="my-20 px-10 lg:px-0 container mx-auto">
             <h1 className="font-bold text-center text-4xl mb-5">Total Instructor : {instructors.length}</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5">
                 {
@@ -31,7 +32,7 @@ const Instructors = () => {
                 }
             </div>
             
-        </div>
+        </div></section>
     );
 };
 

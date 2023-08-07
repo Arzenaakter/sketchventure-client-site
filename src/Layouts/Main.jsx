@@ -4,10 +4,9 @@ import Header from "../Pages/SharedPages/Header/Header";
 
 const Main = () => {
   return (
-    <div className="bg-slate-200">
+    <div className="">
       <Header></Header>
-     
-     <Outlet></Outlet>
+      <Outlet></Outlet>
       <Footer></Footer>
     </div>
   );

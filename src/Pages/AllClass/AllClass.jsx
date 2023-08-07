@@ -78,7 +78,8 @@ const  location = useLocation();
   
 
     return (
-        <div className="my-20 px-10 lg:px-0">
+    <section>
+        <div className="my-20 px-10 lg:px-0 container mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {
                     AllClasses.map(classcard =><div key={classcard._id} className={classcard.availableSeats == 0 ? 'card card-compact w-full bg-red-500 shadow-xl':'card card-compact w-full bg-base-100 shadow-xl'}>
@@ -105,7 +106,7 @@ const  location = useLocation();
                 }
             </div>
             
-        </div>
+        </div></section>
     );
 };
 
