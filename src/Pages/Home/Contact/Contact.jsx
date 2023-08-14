@@ -10,12 +10,12 @@ import { motion } from "framer-motion";
 
 const Contact = () => {
   return (
-    <section className="bg-[#2D2D2D] text-[#000]  py-20 relative lg:px-0 px-10 ">
+    <section className="bg-[#2D2D2D] text-[#000]  py-20 relative lg:px-0 px-20 ">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
-        className="container mx-auto bg-white md:py-10 flex md:flex-row flex-col gap-20 md:h-[320px] h-auto">
+        className="container mx-auto w-[70%] bg-white md:py-10 lg:ps-5 flex md:flex-row flex-col gap-20 md:h-[320px] h-auto">
         <div className="  bg-[#8a1014]   z-10 md:w-[40%] w-[100%] p-5 md:-ms-16 shadow-xl space-y-3">
           <h4 className="text-center py-2 font-semibold">
             Contact Information{" "}
@@ -80,7 +80,7 @@ const Contact = () => {
               name="msg"
               id=""
               placeholder="Message"
-              className="bg-[#2D2D2D] md:w-[82%] p-2 block my-2 md:my-0 mx-auto md:mx-0"
+              className="bg-[#2D2D2D] md:w-[90%] p-2 block my-2 md:my-0 mx-auto md:mx-0"
             />
             <input
               type="submit"

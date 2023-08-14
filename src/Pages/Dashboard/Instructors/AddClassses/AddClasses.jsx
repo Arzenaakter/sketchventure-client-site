@@ -14,39 +14,37 @@ const AddClasses = () => {
       instructorName: user.displayName,
       instructorEmail: user.email,
       status: "pending",
-      feedback: '',
+      feedback: "",
       enrolledStudent: 0,
-      availableSeats: parseInt(data.availableSeats) // Convert availableSeats to numeric value
+      availableSeats: parseInt(data.availableSeats), // Convert availableSeats to numeric value
     };
-    console.log(typeof(addedClassInfo.enrolledStudent));
+    console.log(typeof addedClassInfo.enrolledStudent);
 
-
-    fetch('https://summer-camp-server-side-xi.vercel.app/addClasses',{
-      method:'POST',
-      headers:{
-        'content-type' : 'application/json'
+    fetch("https://summer-camp-server-side-xi.vercel.app/addClasses", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
       },
-      body: JSON.stringify(addedClassInfo)
+      body: JSON.stringify(addedClassInfo),
     })
-    .then(res =>res.json())
-    .then(data=>{
-      if(data.insertedId){
-        Swal.fire({
-          position: 'top-center',
-          icon: 'success',
-          title: 'Add class successfully',
-          showConfirmButton: false,
-          timer: 1500
-        })
-      }
-    })
-
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Add class successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
 
     reset();
   };
 
   return (
-    <div className="">
+    <div className="px-10 lg:px-0">
       <h2 className="text-center text-3xl mt-4 font-bold">Add a Class</h2>
 
       <div className="hero min-h-screen ">
@@ -58,81 +56,80 @@ const AddClasses = () => {
               {/*  */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
                 {/* instructor email */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  type="text"
-                  id="instructorEmail"
-                  className="input input-bordered relative"
-                  value={user.email}
-                  readOnly
-                />
-              </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Email</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="instructorEmail"
+                    className="input input-bordered relative"
+                    value={user.email}
+                    readOnly
+                  />
+                </div>
 
-              {/* instructor name */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Instructor Name</span>
-                </label>
-                <input
-                  type="text"
-                  id="instructorName"
-                  className="input input-bordered relative"
-                  value={user.displayName}
-                  readOnly
-                />
-              </div>
-              {/* Class Name */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Class Name</span>
-                </label>
-                <input
-                  type="text"
-                  id="className"
-                  className="input input-bordered relative"
-                  {...register("className", { required: true })}
-                />
-              </div>
-              {/* Class Image */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Class Image URL</span>
-                </label>
-                <input
-                  type="text"
-                  id="classImage"
-                  className="input input-bordered relative"
-                  {...register("classImage", { required: true })}
-                />
-              </div>
-              {/* Available seats */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Available seats</span>
-                </label>
-                <input
-                  type="number"
-                  id="availableSeats"
-                  className="input input-bordered relative"
-                  {...register("availableSeats", { required: true, min: 0 })}
-                />
-              </div>
-              {/* Price */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Price</span>
-                </label>
-                <input
-                  type="number"
-                  id="price"
-                  className="input input-bordered relative"
-                  {...register("price", { required: true, min: 0 })}
-                />
-              </div>
-
+                {/* instructor name */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Instructor Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="instructorName"
+                    className="input input-bordered relative"
+                    value={user.displayName}
+                    readOnly
+                  />
+                </div>
+                {/* Class Name */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Class Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="className"
+                    className="input input-bordered relative"
+                    {...register("className", { required: true })}
+                  />
+                </div>
+                {/* Class Image */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Class Image URL</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="classImage"
+                    className="input input-bordered relative"
+                    {...register("classImage", { required: true })}
+                  />
+                </div>
+                {/* Available seats */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Available seats</span>
+                  </label>
+                  <input
+                    type="number"
+                    id="availableSeats"
+                    className="input input-bordered relative"
+                    {...register("availableSeats", { required: true, min: 0 })}
+                  />
+                </div>
+                {/* Price */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Price</span>
+                  </label>
+                  <input
+                    type="number"
+                    id="price"
+                    className="input input-bordered relative"
+                    {...register("price", { required: true, min: 0 })}
+                  />
+                </div>
               </div>
               {/*  */}
 

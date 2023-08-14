@@ -3,7 +3,7 @@ import { BsArrowRight } from "react-icons/bs";
 
 const Choose = () => {
   return (
-    <section className=" text-[#000] py-8">
+    <section className="  py-8">
       <div className="mb-10 px-10 lg:px-0 container mx-auto  ">
         <motion.h3
           className="text-3xl  font-bold text-center mb-10 "

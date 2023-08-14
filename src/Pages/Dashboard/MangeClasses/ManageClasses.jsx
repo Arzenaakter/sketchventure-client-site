@@ -1,15 +1,10 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link  } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-
-
-
-
 
 const ManageClasses = () => {
   const [classes, setClasses] = useState([]);
- 
 
   useEffect(() => {
     fetch("https://summer-camp-server-side-xi.vercel.app/addClasses")
@@ -21,9 +16,12 @@ const ManageClasses = () => {
   const handleApprove = (id) => {
     console.log(id, "approve");
 
-    fetch(`https://summer-camp-server-side-xi.vercel.app/addClasses/approve/${id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://summer-camp-server-side-xi.vercel.app/addClasses/approve/${id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
@@ -42,9 +40,12 @@ const ManageClasses = () => {
   const handleDeny = (id) => {
     console.log(id, "deny");
 
-    fetch(`https://summer-camp-server-side-xi.vercel.app/addClasses/deny/${id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://summer-camp-server-side-xi.vercel.app/addClasses/deny/${id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
@@ -59,13 +60,10 @@ const ManageClasses = () => {
       });
   };
 
-
-// 
-
-  
+  //
 
   return (
-    <div>
+    <div className="px-10 lg:px-0">
       <h1>Manage Classes</h1>
 
       <div className="overflow-x-auto">
@@ -130,9 +128,14 @@ const ManageClasses = () => {
                     className="btn common-btn btn-sm text-[12px] w-20">
                     Deny
                   </button>
-{/* TODO */}
-                  <Link to={`/dashboard/adminFeedBack/${classInfo._id}`} feedbackInfo={classInfo}><button  className="btn common-btn btn-sm text-[12px] w-20 mt-2">Feedback</button></Link>
-                  
+                  {/* TODO */}
+                  <Link
+                    to={`/dashboard/adminFeedBack/${classInfo._id}`}
+                    feedbackInfo={classInfo}>
+                    <button className="btn common-btn btn-sm text-[12px] w-20 mt-2">
+                      Feedback
+                    </button>
+                  </Link>
                 </td>
               </tr>
             ))}
@@ -140,7 +143,6 @@ const ManageClasses = () => {
         </table>
       </div>
       {/*  */}
-     
     </div>
   );
 };
