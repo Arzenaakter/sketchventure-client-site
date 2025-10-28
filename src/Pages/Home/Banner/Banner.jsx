@@ -1,162 +1,75 @@
-import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import Typewriter from "react-ts-typewriter";
+import { GiImbricatedArrows } from "react-icons/gi";
 
 const Banner = () => {
-  const [sliderRef] = useKeenSlider(
-    {
-      loop: true,
-    },
-    [
-      (slider) => {
-        let timeout;
-        let mouseOver = false;
-        function clearNextTimeout() {
-          clearTimeout(timeout);
-        }
-        function nextTimeout() {
-          clearTimeout(timeout);
-          if (mouseOver) return;
-          timeout = setTimeout(() => {
-            slider.next();
-          }, 1000);
-        }
-        slider.on("created", () => {
-          slider.container.addEventListener("mouseover", () => {
-            mouseOver = true;
-            clearNextTimeout();
-          });
-          slider.container.addEventListener("mouseout", () => {
-            mouseOver = false;
-            nextTimeout();
-          });
-          nextTimeout();
-        });
-        slider.on("dragStarted", clearNextTimeout);
-        slider.on("animationEnded", nextTimeout);
-        slider.on("updated", nextTimeout);
-      },
-    ]
-  );
-
   return (
-    <>
-      <div ref={sliderRef} className="keen-slider">
-        <div className="keen-slider__slide number-slide1">
-          {/*  */}
-          <div
-            className="hero min-h-screen"
-            style={{
-              backgroundImage:
-                "url(https://img.freepik.com/free-photo/children-playing-grass_1098-504.jpg?size=626&ext=jpg&ga=GA1.2.2001766054.1688998742&semt=ais)",
-            }}>
-            <div className="hero-overlay bg-black bg-opacity-20"></div>
-            <div className="hero-content text-center text-neutral-content">
-              <div className="max-w- text-white  ">
-                <h1 className="mb-5 lg:text-7xl text-2xl font-bold ">
-                  <Typewriter text=" Make Your Summer" />
-                </h1>
-                <motion.h2
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ ease: "easeInOut", duration: 1.5 }}
-                  className="mb-5 lg:text-3xl text-xl font-bold italic">
-                  Unforgettable !
-                </motion.h2>
-                <motion.button
-                  initial={{ opacity: 0, height: "0 " }}
-                  whileInView={{ opacity: 1, height: "100%" }}
-                  transition={{ ease: "easeInOut", duration: 1.5 }}
-                  className="btn common-btn mt-10">
-                  Join Now
-                </motion.button>
-              </div>
-            </div>
-          </div>
-          {/*  */}
-        </div>
-        <div className="keen-slider__slide number-slide2">
-          {/*  */}
-          <div
-            className="hero min-h-screen"
-            style={{
-              backgroundImage:
-                "url(https://img.freepik.com/free-photo/group-girls-camping-forest_1303-9509.jpg?size=626&ext=jpg&ga=GA1.2.2001766054.1688998742&semt=ais)",
-            }}>
-            <div className="hero-overlay bg-black bg-opacity-20"></div>
-            <div className="hero-content text-center text-neutral-content">
-              <div className="max-w- text-white ">
-                <motion.h1
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ ease: "easeInOut", duration: 1.5 }}
-                  className="mb-5 text-2xl lg:text-7xl font-bold">
-                  Unleash Your Creativity
-                </motion.h1>
+    <div className="pt-28 bg-gradient-to-r from-orange-100/20 to-orange-200/20 pb-10">
+      <h3 className=" text-center font-bold text-2xl lg:text-5xl bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] bg-clip-text text-transparent">
+        Discover Joy of Art at Summer Camp
+      </h3>
+      <p className=" text-center px-10 lg:px-40 mt-4 text-gray-700 text-sm lg:text-lg ">
+        Join us this summer for an exciting art camp that will ignite your
+        creativity! Our art camp is the perfect opportunity for young artists to
+        explore various art forms and express themselves in a supportive and
+        inspiring environment. With a wide range of engaging activities, such as
+        painting, sculpting, and mixed media projects.
+      </p>
+      <div className="flex justify-center mt-6">
+        <div className="relative w-52 h-[60px] flex items-center justify-center">
+          {/* Animated circular border */}
+          <motion.svg
+            className="absolute inset-0 w-full h-full"
+            viewBox="0 0 200 50"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <motion.rect
+              x="2"
+              y="2"
+              width="196"
+              height="46"
+              rx="23"
+              stroke="url(#gradient)"
+              strokeWidth="3"
+              strokeDasharray="500"
+              strokeDashoffset="500"
+              animate={{ strokeDashoffset: [500, 0, -500] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+            <defs>
+              <linearGradient
+                id="gradient"
+                x1="0"
+                y1="0"
+                x2="200"
+                y2="50"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stopColor="var(--primary)" />
+                <stop offset="1" stopColor="var(--secondary)" />
+              </linearGradient>
+            </defs>
+          </motion.svg>
 
-                <motion.h2
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ ease: "easeInOut", duration: 1.5 }}
-                  className="mb-5 lg:text-3xl text-xl font-bold italic">
-                  at Summer Camp
-                </motion.h2>
-                <motion.button
-                  initial={{ opacity: 0, height: "0 " }}
-                  whileInView={{ opacity: 1, height: "100%" }}
-                  transition={{ ease: "easeInOut", duration: 1.5 }}
-                  className="btn common-btn mt-10">
-                  Join Now
-                </motion.button>
-              </div>
-            </div>
-          </div>
-          {/*  */}
+          {/* Button content */}
+          <Link
+            to="/login"
+            id="order"
+            className="relative z-10 w-full text-center rounded-full text-white font-medium text-lg px-4 py-2 
+          bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)]  shadow-lg
+          hover:from-[var(--secondary)] hover:to-[var(--primary)] 
+          transition-all duration-300 flex items-center justify-center gap-2"
+          >
+            Join Now <GiImbricatedArrows size={20} />
+          </Link>
         </div>
-        <div className="keen-slider__slide number-slide3">
-          {/*  */}
-          <div
-            className="hero min-h-screen"
-            style={{
-              backgroundImage:
-                "url(https://img.freepik.com/premium-photo/just-chilling-campsite-shot-group-young-friends-hanging-out-their-campsite_590464-38765.jpg?size=626&ext=jpg&ga=GA1.2.2001766054.1688998742&semt=ais)",
-            }}>
-            <div className="hero-overlay bg-black bg-opacity-20"></div>
-            <div className="hero-content text-center text-neutral-content">
-              <div className="max-w- text-white ">
-                <motion.h1
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ ease: "easeInOut", duration: 1.5 }}
-                  className="mb-5 text-2xl lg:text-7xl font-bold">
-                  Discover Joy of Art
-                </motion.h1>
-
-                <motion.h2
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ ease: "easeInOut", duration: 1.5 }}
-                  className="mb-5 lg:text-3xl text-xl font-bold italic">
-                  at Summer Camp
-                </motion.h2>
-                <motion.button
-                  initial={{ opacity: 0, height: "0 " }}
-                  whileInView={{ opacity: 1, height: "100%" }}
-                  transition={{ ease: "easeInOut", duration: 1.5 }}
-                  className="btn common-btn mt-10">
-                  Join Now
-                </motion.button>
-              </div>
-            </div>
-          </div>
-          {/*  */}
-        </div>
-        {/* <div className="keen-slider__slide number-slide4">4</div>
-        <div className="keen-slider__slide number-slide5">5</div>
-        <div className="keen-slider__slide number-slide6">6</div> */}
       </div>
-    </>
+    </div>
   );
 };
 

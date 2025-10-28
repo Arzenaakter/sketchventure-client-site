@@ -6,10 +6,11 @@ const Choose = () => {
     <section className="  py-8">
       <div className="mb-10 px-10 lg:px-0 container mx-auto  ">
         <motion.h3
-          className="text-3xl  font-bold text-center mb-10 "
+          className="text-3xl  font-bold text-center  mt-10  mb-20 text-[var(--primary)]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}>
+          transition={{ duration: 1.5 }}
+        >
           Why Choose Us
         </motion.h3>
 
@@ -18,13 +19,15 @@ const Choose = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 2 }}
-            className="w-[100%] lg:w-[50%]">
+            className="w-[100%] lg:w-[50%]"
+          >
             {/*  */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 1 }}
-              className="flex lg:flex-row flex-col justify-center items-center gap-5 mb-4">
+              className="flex lg:flex-row flex-col justify-center items-center gap-5 mb-4"
+            >
               <span>
                 <BsArrowRight size={24} />
               </span>
@@ -47,7 +50,8 @@ const Choose = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 1.5 }}
-              className="flex lg:flex-row flex-col mb-4 justify-center items-center gap-5">
+              className="flex lg:flex-row flex-col mb-4 justify-center items-center gap-5"
+            >
               <span>
                 <BsArrowRight size={24} />
               </span>
@@ -70,7 +74,8 @@ const Choose = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 2 }}
-              className="flex lg:flex-row flex-col mb-4 justify-center items-center gap-5">
+              className="flex lg:flex-row flex-col mb-4 justify-center items-center gap-5"
+            >
               <span>
                 <BsArrowRight size={24} />
               </span>
@@ -93,7 +98,8 @@ const Choose = () => {
             className="w-[100%] lg:w-[40%]"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 2 }}>
+            transition={{ duration: 2 }}
+          >
             <img
               src="https://img.freepik.com/free-vector/curiosity-people-concept-illustration_114360-11034.jpg?size=626&ext=jpg&ga=GA1.2.2001766054.1688998742&semt=ais"
               alt=""

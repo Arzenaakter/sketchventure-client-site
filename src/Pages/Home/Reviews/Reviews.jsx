@@ -5,19 +5,30 @@ const Reviews = () => {
     <section className="  py-8">
       <div className="my-10 px-10 lg:px-0 container mx-auto  ">
         <motion.h3
-          className="text-3xl  font-bold text-center mb-10 "
+          className="text-3xl  font-bold text-center  mt-10 text-[var(--primary)]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}>
+          transition={{ duration: 1.5 }}
+        >
           Client Reviews
         </motion.h3>
+        <motion.p
+          className=" text-center mt-3 mb-20 text-gray-600"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+        >
+          Smiles, memories, and inspiration— see how our classes make a lasting
+          impression!
+        </motion.p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 justify-center">
           {/* 1 */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className=" mx-auto space-y-3  flex flex-col justify-center items-center">
+            className=" mx-auto space-y-3  flex flex-col justify-center items-center"
+          >
             <div className="hexagon-wrapper ">
               <img
                 className="hexagon-img"
@@ -36,7 +47,8 @@ const Reviews = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1.3 }}
-            className=" mx-auto space-y-3  flex flex-col justify-center items-center">
+            className=" mx-auto space-y-3  flex flex-col justify-center items-center"
+          >
             <div className="hexagon-wrapper ">
               <img
                 className="hexagon-img"
@@ -55,7 +67,8 @@ const Reviews = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1.6 }}
-            className=" mx-auto space-y-3 flex flex-col justify-center items-center">
+            className=" mx-auto space-y-3 flex flex-col justify-center items-center"
+          >
             <div className="hexagon-wrapper ">
               <img
                 className="hexagon-img"
@@ -74,7 +87,8 @@ const Reviews = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1.8 }}
-            className=" mx-auto space-y-3 flex flex-col justify-center items-center">
+            className=" mx-auto space-y-3 flex flex-col justify-center items-center"
+          >
             <div className="hexagon-wrapper ">
               <img
                 className="hexagon-img"

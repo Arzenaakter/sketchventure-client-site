@@ -20,107 +20,152 @@ import SignUp from "../Pages/SignUp/SignUp";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import PrivateRoute from "./PrivateRoute";
+import ContactUs from "../Pages/ContactUs/ContactUs";
+import AboutUS from "../Pages/AboutUs/About";
+import BlogList from "../Pages/Blog/BlogList";
+import BlogDetails from "../Pages/Blog/BlogDetails";
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main></Main>,
-      children:[
-        {
-            path:'/',
-            element:<Home></Home>
-        },
-        {
-          path:'/instructor',
-          element:<Instructors></Instructors>
-        },
-        {
-          path:'/classes',
-          element:<AllClass></AllClass>
+  {
+    path: "/",
+    element: <Main></Main>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUS></AboutUS>,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs></ContactUs>,
+      },
+      {
+        path: "/blogs",
+        element: <BlogList></BlogList>,
+      },
+      {
+        path: "/blogs/:id",
+        element: <BlogDetails></BlogDetails>,
+      },
+      {
+        path: "/instructor",
+        element: <Instructors></Instructors>,
+      },
+      {
+        path: "/classes",
+        element: <AllClass></AllClass>,
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "signup",
+        element: <SignUp></SignUp>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/dashboard/admin",
+        element: <DashboardContent></DashboardContent>,
+      },
+      {
+        path: "/dashboard/instructor",
+        element: <DashboardContent></DashboardContent>,
+      },
+      {
+        path: "/dashboard/student",
+        element: <DashboardContent></DashboardContent>,
+      },
+      {
+        path: "/dashboard/admin",
+        element: <DashboardContent></DashboardContent>,
+      },
+      {
+        path: "/dashboard/manageClass",
+        element: (
+          <AdminRoute>
+            <ManageClasses></ManageClasses>
+          </AdminRoute>
+        ),
+      },
 
-        },
-        {
-          path:'login',
-          element:<Login></Login>
-        },
-        {
-          path:'signup',
-          element:<SignUp></SignUp>
-        }
-      ]
-    },
-    {
-      path:'/dashboard',
-      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-      children:[
-
-        {
-          path:'/dashboard/admin',
-          element:<DashboardContent></DashboardContent>
-
-
-        },
-        {
-          path:'/dashboard/instructor',
-          element:<DashboardContent></DashboardContent>
-
-
-        },
-        {
-          path:'/dashboard/student',
-          element:<DashboardContent></DashboardContent>
-
-
-        },
-        {
-          path:'/dashboard/admin',
-          element:<DashboardContent></DashboardContent>
-
-
-        },
-        {
-          path:'/dashboard/manageClass',
-          element:<AdminRoute><ManageClasses></ManageClasses></AdminRoute>
-        },
-
-        {
-          path:'/dashboard/manageUser',
-          element:<AdminRoute><ManageUsers></ManageUsers></AdminRoute>
-        },
-        {
-          path:'/dashboard/adminFeedBack/:id',
-          element:<AdminFeedBack></AdminFeedBack>
-        },
-        {
-          path:'/dashboard/addClass',
-          element:<InstructorRoute><AddClasses></AddClasses></InstructorRoute>
-        },
-        {
-          path:'/dashboard/myClass',
-          element:<InstructorRoute><MyClasses></MyClasses></InstructorRoute>
-        },
-        {
-          path:'/dashboard/mySelectedClass',
-          element:<PrivateRoute><MySelectedClass></MySelectedClass></PrivateRoute>
-        },
-        {
-          path:'/dashboard/enrolledClass',
-          element:<PrivateRoute><EnrolledClasses></EnrolledClasses></PrivateRoute>
-        },
-        {
-          path:'/dashboard/paymentPage',
-          element:<PrivateRoute><PaymentPage></PaymentPage></PrivateRoute>
-        },
-        {
-          path:'/dashboard/paymentHistory',
-          element:<PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
-        },
-      ]
-
-    },
-    {
-        path: '*',
-        element:<Error></Error>
-    }
-  ]);
-  export default router;
+      {
+        path: "/dashboard/manageUser",
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/adminFeedBack/:id",
+        element: <AdminFeedBack></AdminFeedBack>,
+      },
+      {
+        path: "/dashboard/addClass",
+        element: (
+          <InstructorRoute>
+            <AddClasses></AddClasses>
+          </InstructorRoute>
+        ),
+      },
+      {
+        path: "/dashboard/myClass",
+        element: (
+          <InstructorRoute>
+            <MyClasses></MyClasses>
+          </InstructorRoute>
+        ),
+      },
+      {
+        path: "/dashboard/mySelectedClass",
+        element: (
+          <PrivateRoute>
+            <MySelectedClass></MySelectedClass>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/enrolledClass",
+        element: (
+          <PrivateRoute>
+            <EnrolledClasses></EnrolledClasses>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/paymentPage",
+        element: (
+          <PrivateRoute>
+            <PaymentPage></PaymentPage>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/paymentHistory",
+        element: (
+          <PrivateRoute>
+            <PaymentHistory></PaymentHistory>
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <Error></Error>,
+  },
+]);
+export default router;

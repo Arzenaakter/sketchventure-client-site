@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { useRef } from "react";
+import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 
 const Upcoming = () => {
   const upComingClasses = [
@@ -40,34 +42,76 @@ const Upcoming = () => {
     },
   ];
 
+  const sliderRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({
+        left: direction === "left" ? -400 : 400,
+        behavior: "smooth",
+      });
+    }
+  };
   return (
     <section>
-      <div className="my-20 px-10 lg:px-0 container mx-auto">
+      <div className="my-20 ">
         <motion.h3
-          className="text-3xl  font-bold text-center mb-5 mt-10 "
+          className="text-3xl  font-bold text-center  mt-10 text-[var(--primary)]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}>
+          transition={{ duration: 1.5 }}
+        >
           UpComing Classes
         </motion.h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {upComingClasses.map((classes, index) => (
-            <motion.div
-              whileHover={{ scale: 0.8 }}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 1.5 }}
-              key={index}
-              className="flex-col   ">
-              <img src={classes.classImage} alt="" className="h-3/4 w-full" />
-              <div className="border px-2 mt-2 border-black hover:bg-slate-600 hover:text-white py-4">
-                <h1 className="font-semibold ">
-                  Class Name: {classes.className}
-                </h1>
-                <p>Price: ${classes.Price}</p>
+        <motion.p
+          className=" text-center mt-3 mb-10 text-gray-600"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+        >
+          Discover what’s coming next and join our upcoming creative
+          experiences.
+        </motion.p>
+
+        <div className="relative max-w-6xl mx-auto">
+          {/* Arrows */}
+          <button
+            onClick={() => scroll("left")}
+            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 p-1.5 bg-white text-[var(--primary)] rounded-full shadow-md hover:bg-gray-100"
+          >
+            <GoArrowLeft size={20} />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 p-1.5 bg-white text-[var(--primary)] rounded-full shadow-md hover:bg-gray-100"
+          >
+            <GoArrowRight size={20} />
+          </button>
+
+          {/* Cards Slider */}
+          <div
+            ref={sliderRef}
+            className="flex overflow-x-auto no-scrollbar scroll-smooth space-x-4 "
+          >
+            {upComingClasses.map((classes, index) => (
+              <div
+                key={index}
+                className="  min-w-[373px]  bg-white rounded-lg shadow border border-[var(--primary)]"
+              >
+                <img
+                  src={classes.classImage}
+                  alt=""
+                  className="h-3/4 w-full rounded-t-md"
+                />
+                <div className=" px-2 mt-2   py-4">
+                  <h1 className="font-semibold text-[var(--primary)] ">
+                    {classes.className}
+                  </h1>
+                  <p>Price: ${classes.Price}</p>
+                </div>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

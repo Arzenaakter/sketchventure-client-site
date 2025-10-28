@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 const About = () => {
   return (
-    <section className="bg-[#2D2D2D] text-[#fff] py-8">
+    <section className="bg-[var(--primary)] text-[#fff] py-8">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
-        className="my-20 px-10 lg:px-0 container mx-auto">
+        className="my-20 px-6 lg:px-20 container mx-auto"
+      >
         <div className="flex md:flex-row flex-col gap-20 justify-center">
           <div className="md:w-[40%] w-[100%]">
             <h3 className="text-3xl  font-bold text-center md:text-start mb-5 ">

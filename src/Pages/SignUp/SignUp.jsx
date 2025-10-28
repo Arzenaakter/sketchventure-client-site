@@ -76,7 +76,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen pt-20">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="card  w-full shadow-2xl bg-base-100">
           <form className="card-body w-96" onSubmit={handleSubmit(onSubmit)}>
@@ -184,7 +184,13 @@ const SignUp = () => {
             </div>
 
             <div className="form-control mt-6">
-              <input className="btn common-btn" type="submit" value="Sign Up" />
+              <input
+                className="px-4 py-2 rounded text-white font-medium text-sm 
+                 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] 
+                  hover:from-[var(--secondary)] hover:to-[var(--primary)] transition-all duration-300"
+                type="submit"
+                value="Sign Up"
+              />
               <label className="label">
                 <p className="text-center">
                   <small>
