@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
-// import DarkMode from "./DarkMode";
+import DarkMode from "./DarkMode";
 
 const Header = () => {
   const { user, LogOut } = useAuth();
@@ -123,9 +123,9 @@ const Header = () => {
               </Link>
             )}
           </div>
-          {/* <div className=" flex-shrink">
+          <div className=" flex-shrink">
             <DarkMode></DarkMode>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

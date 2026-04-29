@@ -49,7 +49,7 @@ const Login = () => {
   };
 
   return (
-    <div className="hero min-h-screen pt-20 ">
+    <div className="hero min-h-screen pt-20 bg-gradient-to-b from-orange-50/90 to-white ">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="card  w-full shadow-2xl bg-base-100">
           <form className="card-body w-96" onSubmit={handleSubmit(onSubmit)}>
